@@ -39,6 +39,8 @@ To design the wireframes I used [balsamiq]()
 
 ##### Librarys and Packages
 
+[Django-allauth](https://docs.allauth.org/en/latest/index.html)
+
 ##### Software
 
 ## Features
