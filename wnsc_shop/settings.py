@@ -81,6 +81,17 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+# Log confirmation emails to console while in production
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBacked"
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+
+
 WSGI_APPLICATION = "wnsc_shop.wsgi.application"
 
 
