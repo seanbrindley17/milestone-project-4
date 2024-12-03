@@ -1,6 +1,19 @@
 /* Header
 ------------------------------------------------------------------------ */
 
+header .navbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-nav {
+    justify-content: center;
+}
+
+.content-nav-option {
+    width: 28%;
+}
+
 
 /* Footer
 ------------------------------------------------------------------------ */
