@@ -24,16 +24,24 @@
     <header class="container-fluid fixed-top">
         <nav class="navbar navbar-expand-lg top-navbar">
             <div class="container-fluid">
-                <!-- Search Form -->
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+
+                <!-- Search Form visible on devices wider than 550px -->
+                <form class="d-flex d-none d-sm-block" role="search" action="" method="">
+                    <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
+
+                <!-- On smaller screens, the search bar will be replaced by a modal button -->
+                <button type="button" class="col-xs d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#searchModal">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
                 <!-- Title and Logo -->
                 <a class="navbar-brand text-center" href="#">WNSC</a>
 
-                <!-- Dropdown for User Options -->
-                <ul class="list-inline mb-0">
+                <!-- User Options on screens larger than 550px -->
+                <ul class="list-inline mb-0 d-none d-sm-block">
+                    <!-- Dropdown for user account options -->
                     <li class="list-inline-item dropdown">
                         <a href="#" class="text-black nav-link dropdown-toggle" id="user-options" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             User Options
@@ -57,9 +65,51 @@
                         <a href="#">Trolley</a>
                     </li>
                 </ul>
+
+                <!-- Dropdown for all user options on small screens -->
+                <ul class="col-xs d-block d-sm-none">
+                    <li class="dropdown">
+                        <a href="#" class="text-black nav-link dropdown-toggle" id="user-options-mobile" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-grip-lines"></i>
+                        </a>
+                        <!-- Need to add Django for loop to show relevant options -->
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="user-options-mobile">
+                            <!-- Only visible to logged out users -->
+                            <a href="#" class="dropdown-item">Sign Up</a>
+                            <a href="#" class="dropdown-item">Log In</a>
+                            <!-- Only visible to logged in users -->
+                            <a href="#" class="dropdown-item">Account</a>
+                            <a href="#" class="dropdown-item">Log Out</a>
+                            <!-- Visible at all times --> 
+                            <a href="#" class="dropdown-item">Club Site</a>
+                            <a href="#" class="dropdown-item">Trolley</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
+
+    <!-- Modal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Search</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="">
+                        <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     {% block content %}
     {% endblock %}
@@ -118,6 +168,8 @@
     
 
     {% block js %}
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/93bf08fb10.js" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     {% endblock %}
