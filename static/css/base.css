@@ -1,5 +1,9 @@
-/* Header
+/* Header & Navbar
 ------------------------------------------------------------------------ */
+
+.top-navbar {
+    margin-bottom: 0px;
+}
 
 header .navbar {
     display: flex;
@@ -12,6 +16,17 @@ header .navbar {
 
 .content-nav-option {
     width: 28%;
+}
+
+/* Home Page
+------------------------------------------------------------------------ */
+
+.image-container {
+    background: url("../images/background-images/pool-image-cropped.jpg") no-repeat center center;
+    background-size: cover;
+    height: calc(100vh - 400px);
+    margin-top: 200px;
+    max-width: 90%;
 }
 
 
