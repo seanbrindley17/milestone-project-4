@@ -1,0 +1,19 @@
+<br>
+<hr>
+<div class="row">
+    {% for product in products %}
+    <div class="col-12 col-sm-6 col-xl-3">
+        <div class="card">
+            <h4 class="card-title">{{ product.name }}</h4>
+            <div class="card-body">
+                <img src="{{ product.image }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <br>
+                <p>£{{ product.price }}</p>
+                <div class="card-footer">
+                    <a href="">View Product Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
