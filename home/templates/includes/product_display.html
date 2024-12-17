@@ -10,7 +10,7 @@
                 <br>
                 <p>£{{ product.price }}</p>
                 <div class="card-footer">
-                    <a href="">View Product Details</a>
+                    <a href="{% url 'product_detail' product.id %}">View Product Details</a>
                 </div>
             </div>
         </div>
