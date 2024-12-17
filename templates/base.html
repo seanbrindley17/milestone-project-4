@@ -21,7 +21,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="container-fluid fixed-top">
+    <header class="container-fluid ">
         <nav class="navbar navbar-expand-lg top-navbar">
             <div class="container-fluid">
 
@@ -47,7 +47,7 @@
                     </li>
                     <!-- Link to Trolley -->
                     <li class="list-group-item">
-                        <a href="#">Trolley</a>
+                        <a href="{% url 'show_trolley' %}">Trolley</a>
                     </li>
                     <!-- Dropdown for user account options -->
                     <li class="list-group-item dropdown">
@@ -82,30 +82,13 @@
                             <a href="#" class="dropdown-item">Log Out</a>
                             <!-- Visible at all times --> 
                             <a href="#" class="dropdown-item">Club Site</a>
-                            <a href="#" class="dropdown-item">Trolley</a>
+                            <a href="{% url 'show_trolley' %}" class="dropdown-item">Trolley</a>
                         </div>
                     </li>
                 </ul>
             </div>
             <br>
-            <div class="container row my-auto justify-content-center">
-                <ul class="nav nav-pills flex-column flex-sm-row content-nav text-center">
-                    <li class="nav-item content-nav-option">
-                        <a class="nav-link" href="#">Swimwear</a>
-                    </li>
-                    <li class="nav-item content-nav-option">
-                        <a class="nav-link" href="#">Equipment</a>
-                    </li>
-                    <li class="nav-item dropdown content-nav-option">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                            aria-expanded="false">Club-Branded</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Clothing</a></li>
-                            <li><a class="dropdown-item" href="#">Equipment/Accessories</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            
         </nav>
     </header>
 
@@ -137,7 +120,7 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="container-fluid fixed-bottom">
+    <footer class="container-fluid sitcky-bottom">
         <hr>
         <div class="row d-flex justify-content-around">
             <!-- Club Info: Full information shown to small and above devices -->

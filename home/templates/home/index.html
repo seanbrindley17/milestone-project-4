@@ -12,17 +12,36 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container image-container">
-        <div class="row">
-            <div class="col my-auto">
-                <h1>Welcome to the shop!<br>Scroll down or use the sort options above to begin!</h1>
-            </div>
+<div class="container row my-auto justify-content-center">
+    <ul class="nav nav-pills flex-column flex-sm-row content-nav text-center">
+        <li class="nav-item content-nav-option">
+            <a class="nav-link" href="#">Swimwear</a>
+        </li>
+        <li class="nav-item content-nav-option">
+            <a class="nav-link" href="#">Equipment</a>
+        </li>
+        <li class="nav-item dropdown content-nav-option">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Club-Branded</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Clothing</a></li>
+                <li><a class="dropdown-item" href="#">Equipment/Accessories</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="container image-container">
+    <div class="row">
+        <div class="col my-auto">
+            <h1>Welcome to the shop!<br>Scroll down or use the sort options above to begin!</h1>
         </div>
     </div>
-    
-    <hr>
+</div>
 
-    <div class="container products-container">
-        {% include "includes/product_display.html" %}
-    </div>
+<hr>
+
+<div class="container products-container">
+    {% include "includes/product_display.html" %}
+</div>
 {% endblock %}
