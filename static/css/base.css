@@ -24,7 +24,7 @@ header .navbar {
 .image-container {
     background: url("../images/background-images/pool-image-cropped.jpg") no-repeat center center;
     background-size: cover;
-    height: calc(100vh - 400px);
+    height: 300px;
     max-width: 90%;
 }
 
