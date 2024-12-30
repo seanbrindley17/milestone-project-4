@@ -12,5 +12,55 @@
 {% endblock %}
 
 {% block content %}
-
+<div class="container">
+    <div class="row">
+        <div class="col col-sm-4">
+            <div class="container">
+                <img src="{{ product.image }}" alt="{{ product.name }}">
+            </div>
+        </div>
+        <div class="col-6 col-sm-4">
+            <h3>{{ product.name }}</h3>
+            <br>
+            <em>{{ product.category.display_name }}</em>
+            <br>
+            <p>{{ product.description }}</p>
+        </div>
+        <div class="col-6 col-sm-4">
+            <form action="" method="">
+                {% csrf_token %}
+                <!-- If statement to display sizes if product has sizes -->
+                {% with product.has_sizes as sizes %}
+                {% if sizes %}
+                    <div class="col-12">
+                    <select id="product-size" name="product-size" class="form-select" aria-label="select-size">
+                        <option selected>Choose Size:</option>
+                        <option value="extra-small">XS</option>
+                        <option value="small">S</option>
+                        <option value="medium">M</option>
+                        <option value="large">L</option>
+                        <option value="extra-large">XL</option>
+                    </select>
+                    </div>
+                {% endif %}
+                <!-- Product Quantity -->
+                <div class="col-12">
+                    <input type="number" class="form-control quantity-input" name="product-quantity" value="1" min="1" max="99">
+                </div>
+                <!-- Add to trolley and go back buttons -->
+                 <div class="col-12">
+                    <!-- Go Back -->
+                    <a href="{% url 'home' %}" class="btn">
+                        Back To Shop
+                    </a>
+                    <!-- Add To Trolley -->
+                    <input type="submit" class="btn" name="" value="Add To Trolley">
+                 </div>
+                 <!-- Hidden input to send user to Product detail page of product just added -->
+                 <input type="hidden" name="redirect-url" value="{{ request.path }}">
+                 {% endwith %}
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
