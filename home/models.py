@@ -22,12 +22,19 @@ class Product(models.Model):
     sku = models.CharField(max_length=254, null=True, blank=True)
     description = models.TextField
     is_club_branded = models.BooleanField(default=False)
+    is_casual = models.BooleanField(default=False, null=True, blank=True)
+    for_training = models.BooleanField(default=False, null=True, blank=True)
+    is_competitive = models.BooleanField(default=False, null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
+    is_footwear = models.BooleanField(default=False, null=True, blank=True)
     is_gendered = models.BooleanField(default=False, null=True, blank=True)
     is_equipment = models.BooleanField(default=False, null=True, blank=True)
+    is_personalised = models.BooleanField(default=False, null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
+    reverse_image = models.ImageField(null=True, blank=True)
+    reverse_image_url = models.URLField(max_length=1024, null=True, blank=True)
 
     def __str__(self):
         return self.name
