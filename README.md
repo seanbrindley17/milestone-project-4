@@ -27,6 +27,10 @@ To design the wireframes I used [balsamiq]()
 
 ### Fonts/Icons
 
+#### Favicon
+
+I initially used a [man swimming emoji](https://favicon.io/emoji-favicons/person-swimming) from favicon.io as a placeholder as Django was going nuts trying to convert the blank favicon into an integer. This didn't actually display the favicon but it stopped the terminal being swamped.
+
 ### Technology Used
 
 #### Coding Languages Used
