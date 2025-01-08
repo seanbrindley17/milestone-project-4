@@ -27,7 +27,7 @@
             <p>{{ product.description }}</p>
         </div>
         <div class="col-6 col-sm-4">
-            <form action="" method="">
+            <form action="{% url 'add_to_trolley' product.id %}" method="POST" class="form">
                 {% csrf_token %}
                 <!-- If statement to display sizes if product has sizes -->
                 {% with product.has_sizes as sizes %}
@@ -87,7 +87,7 @@
                     <input type="submit" class="btn" name="" value="Add To Trolley">
                  </div>
                  <!-- Hidden input to send user to Product detail page of product just added -->
-                 <input type="hidden" name="redirect-url" value="{{ request.path }}">
+                 <input type="hidden" name="return-url" value="{{ request.path }}">
                  {% endwith %}
                  {% endwith %}
             </form>
