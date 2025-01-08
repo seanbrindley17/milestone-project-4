@@ -27,19 +27,20 @@
                     <th>Price</th>
                 </tr>
                 <!-- Row for item display -->
+                {% for item in items_in_trolley %}
                  <!-- Need to add for statement to iterate through trolley products once add to trolley view is complete -->
                 <tr>
                     <!-- First data cell contains product image and name -->
                     <td>
-                        {{ product.image }} <p>{{ product.name }}</p>
+                        {{ item.product.image }} <p>{{ item.product.name }}</p>
                     </td>
                     <!-- 2nd cell contains current quantity and the option to increase or decrease it -->
                     <td>
-                        <form action="">
+                        <form action="{% url 'add_to_trolley' item.product.id %}" method="POST" class="form update-form">
                             {% csrf_token %}
                             <input type="number" class="form-control quantity-input" name="product-quantity"
-                                value="{{ product.product-quantity }}" min="1" max="99">
-                            {% if product.is_personalised %}
+                                value="{{ item.quantity }}" min="1" max="99">
+                            {% if item.product.is_personalised %}
                             <span>Enter Name: (Min: 2 - Max: 14 Characters)</span>
                             <input type="text" class="form-control personalisation-input" name="product-personalisation-input" value="" minlength="2" maxlength="14">
                             {% endif %}
@@ -47,9 +48,10 @@
                     </td>
                     <!-- 3rd cell contains item price -->
                     <td>
-                        <p>{{ product.price }}</p>
+                        <p>{{ item.product.price }}</p>
                     </td>
                 </tr>
+                {% endfor %}
             </table>
             {% else %}
             <p>No Items In Trolley</p>
