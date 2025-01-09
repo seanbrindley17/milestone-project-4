@@ -50,6 +50,11 @@
                     <td>
                         <p>{{ item.product.price }}</p>
                     </td>
+                    <td>
+                        <a href="#removeItemModal-{{ item.product.id }}" class="btn" data-bs-toggle="modal">
+                            Remove Item From Trolley
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
@@ -62,4 +67,25 @@
     </div>
 
     <a href="{% url 'view_checkout' %}">Checkout</a>
+
+    {% for item in items_in_trolley %}
+    <div class="modal fade" id="removeItemModal-{{ item.product.id }}" tabindex="-1" aria-labelledby="removeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>You are about to remove {{ item.product.name }} from your trolley</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure?</p>
+                    <form action="{% url 'remove_item' item.product.id %}" method="POST" class="form delete-form">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">Yes, Remove Item</button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal">No, Go Back!</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
 {% endblock %}

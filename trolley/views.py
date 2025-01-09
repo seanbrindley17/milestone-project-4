@@ -41,3 +41,20 @@ def add_to_trolley(request, item_id):
     request.session["trolley"] = trolley
     print(request.session["trolley"])
     return redirect(return_url)
+
+
+# View for the user to be able to remove items from their trolley
+def remove_item(request, item_id):
+
+    # Get the current trolley items
+    trolley = request.session.get("trolley", {})
+
+    # Check the item id is in the trolley
+    if item_id in trolley:
+        # delete item_id from trolley
+        del trolley[item_id]
+
+    # As in the add_to_trolley above, overwrite with updated trolley
+    request.session["trolley"] = trolley
+
+    return redirect("show_trolley")
