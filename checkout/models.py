@@ -38,15 +38,16 @@ class Order(models.Model):
     def save(self, *args, **kwargs):
 
         if not self.order_number:
-            self.order_number = self._generate_order_number
+            self.order_number = self._generate_order_number()
         super().save(*args, **kwargs)
 
     # Updates the total cost by aggregating the sum of the items
     def update_total_cost(self):
 
-        self.order_cost = self.items.aggregate(Sum("item_total_cost"))[
-            "item_total_cost__sum"
-        ]
+        self.order_cost = (
+            self.items.aggregate(Sum("item_total_cost"))["item_total_cost__sum"] or 0
+        )
+        self.delivery_cost = self.order_cost * settings.DELIVERY_PERCENTAGE / 100
         self.total_cost = self.order_cost + self.delivery_cost
         self.save()
 
@@ -80,4 +81,4 @@ class OrderItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"SKU {self.product.sku} on  order {self.order.order_number}"
+        return f"SKU {self.product.sku} on order {self.order.order_number}"
