@@ -23,7 +23,9 @@ To design the wireframes I used [balsamiq]()
 | Product Details Page | ![screenshot of product details page desktop wireframe](/readme-documentation/wireframes/Product%20Detail%20Page%20-%20Desktop.png) | ![screenshot of product details page tablet wireframe](/readme-documentation/wireframes/Product%20Details%20Page%20-%20Tablet.png) | ![screenshot of product details page mobile wireframe](/readme-documentation/wireframes/Product%20Detail%20Page%20-%20Mobile.png) |
 | Trolley Page | ![screenshot of trolley page desktop wireframe](/readme-documentation/wireframes/Trolley%20Page%20-%20Desktop.png) | ![screenshot of trolley page tablet wireframe](/readme-documentation/wireframes/Trolley%20Page%20-%20Tablet.png) | ![screenshot of trolley page mobile wireframe](/readme-documentation/wireframes/Trolley%20Page%20-%20Mobile.png) |
 
-### Colours/Background
+### Colours/Background/Images
+
+To display an item image to the user even if the image link is not there or is broken, I used [this no image placeholder](https://www.pexels.com/photo/autumn-camping-28216688/) from Pexels. 
 
 ### Fonts/Icons
 
