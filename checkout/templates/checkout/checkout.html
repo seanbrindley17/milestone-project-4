@@ -13,4 +13,50 @@
 
 {% block content %}
     <h1>Checkout</h1>
+
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <p>Complete purchase below</p>
+            <!-- Checkout form for user to fill in to purchase items -->
+            <form action="{% url 'view_checkout' %}" method="POST" id="payment-form">
+                {% csrf_token %}
+                <!-- First fieldset contains user personal details -->
+                <fieldset class="px-3 mb-4">
+                    <legend class="fieldset-label px-2 w-auto">Your Details</legend>
+                    {{ order_form.name }}
+                    {{ order_form.surname }}
+                    {{ order_form.email }}
+                    {{ order_form.phone_number }}
+                </fieldset>
+                <!-- Second fieldset contains user's delivery information -->
+                <fieldset class="px-3 mb-4">
+                    <legend class="fieldset-label px-2 w-auto">Delivery Information</legend>
+                    {{ order_form.address_line_one }}
+                    {{ order_form.address_line_two }}
+                    {{ order_form.town_or_city }}
+                    {{ order_form.county }}
+                    {{ order_form.postcode }}
+                </fieldset>
+                <!-- Third fieldset contains payment information, secured using stripe -->
+                <fieldset class="px-3">
+                    <legend class="fieldset-label px-2 w-auto">Payment Information</legend>
+                    <!-- #card-payment div will be used for the Stripe payment -->
+                    <div class="mb-3" id="card-payment"></div>
+                    <!-- This one contains errors messages -->
+                    <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
+                </fieldset>
+                <div>
+                    <a href="{% url 'view_trolley' %}" class="btn-outline-black">
+                        <span>
+                            Review Items In Trolley
+                        </span>
+                    </a>
+                    <button type="submit" class="btn-black">
+                        <span>Confirm and Pay!</span>
+                    </button>
+                    <p class="text-danger my-0"><span>You will be charged £{{ total_cost | floatformat:2 }}</span></p>
+                </div>
+            </form>
+        </div>
+    </div>
 {% endblock %}
