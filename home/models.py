@@ -20,7 +20,7 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=254)
     sku = models.CharField(max_length=254, null=True, blank=True)
-    description = models.TextField
+    description = models.TextField(null=True, blank=True)
     is_club_branded = models.BooleanField(default=False)
     is_casual = models.BooleanField(default=False, null=True, blank=True)
     for_training = models.BooleanField(default=False, null=True, blank=True)
