@@ -39,17 +39,30 @@ def add_to_trolley(request, item_id):
             # If there's already an item with the size that is being added, then increment quantity of item and size
             if size in trolley[item_id]["items_by_size"].keys():
                 trolley[item_id]["items_by_size"][size] += quantity
+                messages.success(
+                    request,
+                    f"Updated quantity of {product.name} in {trolley[item_id]["items_by_size"][size]}",
+                )
             else:
                 # If this is a new size of an existing item being added, set the quantity to the value of the quantity added
                 trolley[item_id]["items_by_size"][size] = quantity
+                messages.success(
+                    request, f"Added { product.name } in size {size} to trolley"
+                )
         else:
             # It item wasn't in trolley, add to dictionary items_by_size to track by size items with same ID
             trolley[item_id] = {"items_by_size": {size: quantity}}
+            messages.success(
+                request, f"Added { product.name } in size {size} to trolley"
+            )
 
     # If there's already an item_id key matching a key in the trolley dictionary
     if item_id in list(trolley.keys()):
         # Then the quantity is incremented accordingly
         trolley[item_id] += quantity
+        messages.success(
+            request, f"Updated quantity of {product.name} in {trolley[item_id]}"
+        )
     else:
         # Otherwise set the item_id key to match the quantity of the product added
         trolley[item_id] = quantity
