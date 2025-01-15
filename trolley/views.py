@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib import messages
 from home.models import Product
 
@@ -96,16 +96,23 @@ def add_to_trolley(request, item_id):
 
 # View for the user to be able to remove items from their trolley
 def remove_item(request, item_id):
+    try:
+        product = get_object_or_404(Product, pk=item_id)
 
-    # Get the current trolley items
-    trolley = request.session.get("trolley", {})
+        # Get the current trolley items
+        trolley = request.session.get("trolley", {})
 
-    # Check the item id is in the trolley
-    if item_id in trolley:
-        # delete item_id from trolley
-        del trolley[item_id]
+        # Check the item id is in the trolley
+        if item_id in trolley:
+            # delete item_id from trolley
+            del trolley[item_id]
+            messages.success(request, f"Removed {product.name}")
 
-    # As in the add_to_trolley above, overwrite with updated trolley
-    request.session["trolley"] = trolley
+        # As in the add_to_trolley above, overwrite with updated trolley
+        request.session["trolley"] = trolley
 
-    return redirect("show_trolley")
+        return redirect("show_trolley")
+
+    except Exception as e:
+        messages.error(request, f"There was an error removing the item {e}")
+        return HttpResponse(status=500)
