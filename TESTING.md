@@ -57,5 +57,6 @@ Return to [README](README.md)
 
 ## Bugs/Issues
 
-* The X button on my toasts doesn't close the toast, despite the data-dismiss being linked to the .toast class in my toasts
+* The X button on my toasts doesn't close the toast, despite the data-dismiss being linked to the .toast class in my toasts.
+    * The fix for this was simple, Bootstrap 5 attributes use data-bs and the example project was made before Bootstrap 5 so I just had to update the data-dismiss to data-bs-dismiss.
 
