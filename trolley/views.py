@@ -56,6 +56,26 @@ def add_to_trolley(request, item_id):
                 request, f"Added { product.name } in size {size} to trolley"
             )
 
+    # Use similar code as above to track shoe sizes if the user buys fins
+    if shoesize:
+        if item_id in list(trolley.keys()):
+            if size in trolley[item_id]["items_by_shoesize"].keys():
+                trolley[item_id]["items_by_shoesize"][shoesize] += quantity
+                messages.success(
+                    request,
+                    f"Updated quantity of {product.name} in {trolley[item_id]["items_by_shoesize"][shoesize]}",
+                )
+            else:
+                trolley[item_id]["items_by_shoesize"][shoesize] = quantity
+                messages.success(
+                    request, f"Added {product.name} in size {shoesize} to trolley"
+                )
+        else:
+            trolley[item_id] = {"items_by_shoesize": {shoesize: quantity}}
+            messages.success(
+                request, f"Added {product.name} in size {shoesize} to trolley"
+            )
+
     # If there's already an item_id key matching a key in the trolley dictionary
     if item_id in list(trolley.keys()):
         # Then the quantity is incremented accordingly
