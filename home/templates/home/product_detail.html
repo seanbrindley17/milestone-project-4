@@ -15,8 +15,14 @@
 <div class="container">
     <div class="row">
         <div class="col col-sm-4">
-            <div class="container">
-                <img src="{{ product.image }}" alt="{{ product.name }}">
+            <div class="container my-5">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                {% elif product.image_url %}
+                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                {% else %}
+                    <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                {% endif %}
             </div>
         </div>
         <div class="col-6 col-sm-4">
