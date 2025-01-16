@@ -64,3 +64,6 @@ Return to [README](README.md)
     * I was getting this error message in the console: `ValueError: Field 'id' expected a number but got 'default-image.jpg'.` So I assume it's an issue with my model somewhere.
         * FIXED: The issue was due to the MEDIA_URL not being read correctly. I had scoured the internet but the solutions I found I had already implimented. So I replaced the {{ MEDIA_URL }} bit in my image if statements with the hard code that Django would expect to see as the MEDIA_URL is really only going to be used for the placeholder image.
         Instead of `<img src="{{ MEDIA_URL }}default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">`, I'm using `<img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">`.
+
+* The checkout page wasn't loading when I was trying to render the template and the context like this `return render(request, context, template)`
+    * FIX: I didn't explictly find a solution but noticed when trawling through that context was always the last argument rendered, so I tried this and it seemed to work.
