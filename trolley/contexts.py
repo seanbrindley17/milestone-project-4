@@ -1,6 +1,6 @@
-from django.conf import settings
-from django.shortcuts import get_object_or_404
 from decimal import Decimal
+from django.shortcuts import get_object_or_404
+from django.conf import settings
 
 from home.models import Product
 
@@ -10,7 +10,7 @@ def trolley_items(request):
 
     items_in_trolley = []
     product_count = 0
-    total_cost = 0
+    order_cost = 0
     trolley = request.session.get("trolley", {})
 
     # Iterates through the products in the trolley dictionary using the .items() method. This was confusing me intially
@@ -19,7 +19,9 @@ def trolley_items(request):
         # increments the product_count by the quantity added to the bag
         product_count += quantity
         # Calculates the total cost of the added item, multiply the quantity by the price. Simple stuff really
-        total_cost += quantity * product.price
+        order_cost += quantity * product.price
+        delivery_charge = order_cost * Decimal(settings.DELIVERY_PERCENTAGE / 100)
+        total_cost = order_cost + delivery_charge
 
         items_in_trolley.append(
             {
@@ -31,6 +33,8 @@ def trolley_items(request):
     context = {
         "items_in_trolley": items_in_trolley,
         "product_count": product_count,
+        "order_cost": order_cost,
+        "delivery_charge": delivery_charge,
         "total_cost": total_cost,
     }
 

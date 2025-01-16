@@ -50,7 +50,7 @@
                 <!-- Summary subtotal -->
                 <div class="col-3 text-right">
                     <p class="my-0 small text-muted">
-                        £{{ item.product.price | calc_subtotal:item.quantity }}
+                        £{{ item.product.price }}
                     </p>
                 </div>
             </div>
@@ -64,7 +64,7 @@
                 <p class="my-0">Total Cost:</p>
             </div>
             <div class="col-3">
-                <p class="my-0">{{ order_total | floatformat:2 }}</p>
+                <p class="my-0">£{{ order_total | floatformat:2 }}</p>
                 <p class="my-0">{{ delivery | floatformat:2 }}</p>
                 <p class="my-0"><strong>{{ total_cost | floatformat:2 }}</strong></p>
             </div>
@@ -100,7 +100,7 @@
                     <div class="mb-3 text-danger" id="card-errors" role="alert"></div>
                 </fieldset>
                 <div>
-                    <a href="{% url 'view_trolley' %}" class="btn-outline-black">
+                    <a href="{% url 'show_trolley' %}" class="btn-outline-black">
                         <span>
                             Review Items In Trolley
                         </span>
