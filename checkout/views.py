@@ -17,6 +17,7 @@ def view_checkout(request):
         return redirect(reverse("home"))
 
     order_form = OrderForm()
-    context = {order_form: order_form}
+    context = {"order_form": order_form}
+    template = "checkout/checkout.html"
 
-    return render(request, context, "checkout/checkout.html")
+    return render(request, template, context)
