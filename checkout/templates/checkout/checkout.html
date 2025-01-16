@@ -64,9 +64,9 @@
                 <p class="my-0">Total Cost:</p>
             </div>
             <div class="col-3">
-                <p class="my-0">£{{ order_total | floatformat:2 }}</p>
-                <p class="my-0">{{ delivery | floatformat:2 }}</p>
-                <p class="my-0"><strong>{{ total_cost | floatformat:2 }}</strong></p>
+                <p class="my-0">£{{ order_cost | floatformat:2 }}</p>
+                <p class="my-0">£{{ delivery_charge | floatformat:2 }}</p>
+                <p class="my-0"><strong>£{{ total_cost | floatformat:2 }}</strong></p>
             </div>
         </div>
         <div class="col-12 col-lg-6">
