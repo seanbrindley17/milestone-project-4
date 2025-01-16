@@ -26,8 +26,10 @@
             </div>
         </div>
 
+        <!-- Summary of items about to be bought -->
         {% for item in items_in_trolley %}
             <div class="row">
+                <!-- Image of items in summary -->
                 <div class="col-2 mb-1">
                     <a href="{% url 'product_detail' item.product.id %}">
                         {% if item.product.image %}
@@ -39,8 +41,34 @@
                         {% endif %}
                     </a>
                 </div>
+                <!-- information about the items in the summary -->
+                <div class="col-7">
+                    <p class="my-0">{{ item.product.name }}</p>
+                    <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size }}{% elif item.product.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
+                    <p class="my-0 small">Quantity: {{ item.quantity }}</p>
+                </div>
+                <!-- Summary subtotal -->
+                <div class="col-3 text-right">
+                    <p class="my-0 small text-muted">
+                        £{{ item.product.price | calc_subtotal:item.quantity }}
+                    </p>
+                </div>
             </div>
         {% endfor %}
+        <hr>
+        <!-- Total order cost summary -->
+        <div class="row text-right">
+            <div class="col-7 offset-2">
+                <p class="my-0">Order Subtotal:</p>
+                <p class="my-0">Delivery Charge:</p>
+                <p class="my-0">Total Cost:</p>
+            </div>
+            <div class="col-3">
+                <p class="my-0">{{ order_total | floatformat:2 }}</p>
+                <p class="my-0">{{ delivery | floatformat:2 }}</p>
+                <p class="my-0"><strong>{{ total_cost | floatformat:2 }}</strong></p>
+            </div>
+        </div>
         <div class="col-12 col-lg-6">
             <p>Complete purchase below</p>
             <!-- Checkout form for user to fill in to purchase items -->
