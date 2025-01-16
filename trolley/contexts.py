@@ -11,6 +11,8 @@ def trolley_items(request):
     items_in_trolley = []
     product_count = 0
     order_cost = 0
+    delivery_charge = 0
+    total_cost = 0
     trolley = request.session.get("trolley", {})
 
     # Iterates through the products in the trolley dictionary using the .items() method. This was confusing me intially
@@ -20,8 +22,9 @@ def trolley_items(request):
         product_count += quantity
         # Calculates the total cost of the added item, multiply the quantity by the price. Simple stuff really
         order_cost += quantity * product.price
-        delivery_charge = order_cost * Decimal(settings.DELIVERY_PERCENTAGE / 100)
-        total_cost = order_cost + delivery_charge
+        if order_cost > 0:
+            delivery_charge = order_cost * Decimal(settings.DELIVERY_PERCENTAGE / 100)
+            total_cost = order_cost + delivery_charge
 
         items_in_trolley.append(
             {
