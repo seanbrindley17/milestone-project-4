@@ -44,6 +44,9 @@ def view_checkout(request):
         messages.error(request, f"Stripe Error: Something went wrong with {e}")
         return redirect(reverse("show_trolley"))
 
+    if not stripe_public_key:
+        messages.warning(request, "Stripe Public Key is missing!")
+
     # Order form available in view
     order_form = OrderForm()
 
