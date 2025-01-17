@@ -162,6 +162,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = "gbp"
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback_secret")
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 
