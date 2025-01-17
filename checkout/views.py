@@ -34,10 +34,15 @@ def view_checkout(request):
 
     # Payment intent
     total_cost_money = int(total_cost * 100)
-    intent = stripe.PaymentIntent.create(
-        amount=total_cost_money,
-        currency="gbp",
-    )
+    try:
+        intent = stripe.PaymentIntent.create(
+            amount=total_cost_money,
+            currency="gbp",
+        )
+        print(intent)
+    except stripe.error.StripeError as e:
+        messages.error(request, f"Stripe Error: Something went wrong with {e}")
+        return redirect(reverse("show_trolley"))
 
     # Order form available in view
     order_form = OrderForm()
