@@ -33,9 +33,9 @@
                 <div class="col-2 mb-1">
                     <a href="{% url 'product_detail' item.product.id %}">
                         {% if item.product.image %}
-                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                            <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                         {% elif item.product.image_url %}
-                            <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                            <img src="{{ item.product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                         {% else %}
                             <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                         {% endif %}
@@ -100,7 +100,7 @@
                     </div>
                     <!-- This one contains errors messages -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert">
-                        
+
                     </div>
                 </fieldset>
                 <div>
