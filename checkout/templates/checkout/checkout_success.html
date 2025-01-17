@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h3>
+                        Thank you for your order! :]
+                    </h3>
+                    <hr>
+                    <p>Email confirmation has been sent to {{ order.email }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
