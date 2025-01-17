@@ -12,7 +12,11 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Checkout</h1>
+    <div class="row">
+        <div class="col-2 offset-5 mb-4">
+            <h1>Checkout</h1>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12 col-lg-6 order-lg-last mb-5">
@@ -30,7 +34,7 @@
         {% for item in items_in_trolley %}
             <div class="row">
                 <!-- Image of items in summary -->
-                <div class="col-2 mb-1">
+                <div class="col-2 offset-1 mb-1">
                     <a href="{% url 'product_detail' item.product.id %}">
                         {% if item.product.image %}
                             <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
@@ -42,13 +46,13 @@
                     </a>
                 </div>
                 <!-- information about the items in the summary -->
-                <div class="col-7">
+                <div class="col-5">
                     <p class="my-0">{{ item.product.name }}</p>
                     <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size }}{% elif item.product.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
                     <p class="my-0 small">Quantity: {{ item.quantity }}</p>
                 </div>
                 <!-- Summary subtotal -->
-                <div class="col-3 text-right">
+                <div class="col-2 text-right">
                     <p class="my-0 small text-muted">
                         £{{ item.product.price }}
                     </p>
@@ -69,14 +73,16 @@
                 <p class="my-0"><strong>£{{ total_cost | floatformat:2 }}</strong></p>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
-            <p>Complete purchase below</p>
+        <hr>
+        <div class="col-12 col-lg-5 offset-lg-1">
+            <p class="text-center">Complete purchase below</p>
             <!-- Checkout form for user to fill in to purchase items -->
             <form action="{% url 'view_checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
                 <!-- First fieldset contains user personal details -->
-                <fieldset class="px-3 mb-4">
+                <fieldset class="px-4 mb-4">
                     <legend class="fieldset-label px-2 w-auto">Your Details</legend>
+                    <br>
                     {{ order_form.name }}
                     {{ order_form.surname }}
                     {{ order_form.email }}
@@ -85,6 +91,7 @@
                 <!-- Second fieldset contains user's delivery information -->
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label px-2 w-auto">Delivery Information</legend>
+                    <br>
                     {{ order_form.address_line_one }}
                     {{ order_form.address_line_two }}
                     {{ order_form.town_or_city }}
@@ -92,15 +99,15 @@
                     {{ order_form.postcode }}
                 </fieldset>
                 <!-- Third fieldset contains payment information, secured using stripe -->
-                <fieldset class="px-3">
+                <fieldset class="px-3 align-items-center">
                     <legend class="fieldset-label px-2 w-auto">Payment Information</legend>
+
                     <!-- #card-payment div will be used for the Stripe payment -->
                     <div class="mb-3" id="payment-element">
-
                     </div>
+
                     <!-- This one contains errors messages -->
                     <div class="mb-3 text-danger" id="card-errors" role="alert">
-
                     </div>
                 </fieldset>
                 <div>
