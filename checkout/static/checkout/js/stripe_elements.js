@@ -8,8 +8,23 @@ const elements = stripe.elements({ clientSecret, appearance });
 const paymentElement = elements.create('payment', options);
 paymentElement.mount('#payment-element');
 
-
-
+//Handle errors
+card.addEventListener("change", function(event) {
+    // Error detected
+    const errorDiv = document.getElementById("card-errors");
+    // Show alert
+    if (event.error) {
+        const html = `
+        <span class="icon" role="alert">
+            <i class="fas fa-times"></i>
+        </span>
+        <span>${event.error.message}</span>
+        `;
+        $(errorDiv).html(html);
+    } else {
+        errorDiv.textContent = "";
+    }
+});
 
 // Handle form submit
 
