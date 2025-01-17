@@ -48,9 +48,11 @@ form.addEventListener('submit', function(ev) {
                 </span>
                 <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+            // re enables card update and submit button for user to fix issue
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
         } else {
+            // If the status of the payment attempt is succeeded, then submit form
             if (result.paymentIntent.status === 'succeeded') {
                 form.submit();
             }
