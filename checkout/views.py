@@ -134,3 +134,29 @@ def view_checkout(request):
     template = "checkout/checkout.html"
 
     return render(request, template, context)
+
+
+# View for a successful checkout proceedure
+def checkout_success(request, order_number):
+
+    # Check if user wants to save info
+    save_info = request.session.get("save_info")
+    # Gets the order using the order number in the Order model
+    order = get_object_or_404(Order, order_number=order_number)
+    messages.success(
+        request,
+        f"Order placed! \
+        Your order number is {order_number}. A confirmation \
+        email will be sent to {order.email}.",
+    )
+
+    # Deletes user's trolley from session as if successful order they won't need it
+    if "trolley" in request.session:
+        del request.session["trolley"]
+
+    template = "checkout/checkout_success.html"
+    context = {
+        "order": order,
+    }
+
+    return render(request, template, context)
