@@ -178,7 +178,7 @@
     <!-- Message display -->
      <!-- Uses Django message levels to render the appropriate toast -->
     {% if messages %}
-    <div class="toast-container position-fixed top-0 start-50 translate-middle-x">
+    <div class="toast-container position-fixed bottom-0 end-0">
         {% for message in messages %}
             {% with message.level as level %}
                 {% if level == 40 %}
