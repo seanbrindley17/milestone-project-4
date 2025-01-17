@@ -26,16 +26,29 @@ def view_checkout(request):
         # Return user to home page to prevent access by inputting the checkout url
         return redirect(reverse("home"))
 
+    # trolley items and costs
     trolley_items_context = trolley_items(request)
     order_cost = trolley_items_context["order_cost"]
     delivery_charge = trolley_items_context["delivery_charge"]
     total_cost = trolley_items_context["total_cost"]
 
+    # Payment intent
+    total_cost_money = int(total_cost * 100)
+    intent = stripe.PaymentIntent.create(
+        amount=total_cost_money,
+        currency="gbp",
+    )
+
+    # Order form available in view
     order_form = OrderForm()
+
     context = {
         "order_form": order_form,
         "stripe_public_key": stripe_public_key,
-        "client_secret": "test client secret",
+        "client_secret": "intent.client_secret",
+        "order_cost": order_cost,
+        "delivery_charge": delivery_charge,
+        "total_cost": total_cost,
     }
     template = "checkout/checkout.html"
 
