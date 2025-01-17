@@ -41,7 +41,7 @@ def view_checkout(request):
         )
         print(intent)
     except stripe.error.StripeError as e:
-        messages.error(request, f"Stripe Error: Something went wrong with {e}")
+        messages.error(request, f"Stripe Error: {e}")
         return redirect(reverse("show_trolley"))
 
     if not stripe_public_key:
