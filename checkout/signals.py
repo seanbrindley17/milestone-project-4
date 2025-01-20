@@ -8,11 +8,11 @@ from .models import OrderItem
 # Will update order cost when item is updated or created
 def update_on_save(sender, instance, created, **kwargs):
     # Update total of instance of order referred to
-    instance.order.update_total()
+    instance.order.update_total_cost()
 
 
 # Updates order cost upon item delete
 @receiver(post_delete, sender=OrderItem)
 def update_on_delete(sender, instance, **kwargs):
 
-    instance.order.update_total()
+    instance.order.update_total_cost()
