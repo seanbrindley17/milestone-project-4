@@ -12,19 +12,22 @@
 {% endblock %}
 
 {% block content %}
+<!-- Product Filters -->
+<hr>
 <div class="filter-container my-1">
+
+    <!-- Filters which will display in a row on small screens and above -->
     <ul class="nav content-nav row text-center d-none d-sm-flex">
     
         <li class="nav-item content-nav-option col-sm-2">
             <a class="nav-link" href="{% url 'home' %}?category=swimwear">Swimwear</a>
         </li>
     
-    
         <li class="nav-item content-nav-option col-sm-2">
             <a class="nav-link" href="{% url 'home' %}?category=equipment,club_branded_equipment">Equipment</a>
         </li>
-    
-    
+        
+        <!-- Uses a dropdown for the two club branded filters -->
         <li class="nav-item dropdown content-nav-option col-sm-2">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false">Club-Branded</a>
@@ -35,14 +38,15 @@
                         href="{% url 'home' %}?category=club_branded_equipment">Equipment/Accessories</a></li>
             </ul>
         </li>
+
         <li class="nav-item content-nav-option col-sm-2">
             <a class="nav-link"
                 href="{% url 'home' %}?category=swimwear,equipment,club_branded_clothing,club_branded_equipment">Reset
                 Filters</a>
         </li>
-    
     </ul>
     
+    <!-- On extra small screens, filters will be accessible via dropdown menu -->
     <ul class="col-xs d-block d-sm-none">
         <li class="nav-item dropdown content-nav-option">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
@@ -63,11 +67,16 @@
         </li>
     </ul>
 </div>
+<hr>
 
+<div class="row">
+    <div class="col">
+        <h2 class="text-center">Welcome to the shop!<br>Scroll down or use the sort options above to begin!</h2>
+    </div>
+</div>
 <div class="container image-container">
     <div class="row">
         <div class="col my-auto">
-            <h1>Welcome to the shop!<br>Scroll down or use the sort options above to begin!</h1>
         </div>
     </div>
 </div>
