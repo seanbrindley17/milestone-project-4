@@ -12,24 +12,54 @@
 {% endblock %}
 
 {% block content %}
-<div class="container row my-auto justify-content-center">
-    <ul class="nav nav-pills flex-column flex-sm-row content-nav text-center">
-        <li class="nav-item content-nav-option">
+<div class="filter-container my-1">
+    <ul class="nav content-nav row text-center d-none d-sm-flex">
+    
+        <li class="nav-item content-nav-option col-sm-2">
             <a class="nav-link" href="{% url 'home' %}?category=swimwear">Swimwear</a>
         </li>
-        <li class="nav-item content-nav-option">
+    
+    
+        <li class="nav-item content-nav-option col-sm-2">
             <a class="nav-link" href="{% url 'home' %}?category=equipment,club_branded_equipment">Equipment</a>
         </li>
-        <li class="nav-item dropdown content-nav-option">
+    
+    
+        <li class="nav-item dropdown content-nav-option col-sm-2">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false">Club-Branded</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="{% url 'home' %}?category=club_branded_clothing">Clothing</a></li>
-                <li><a class="dropdown-item" href="{% url 'home' %}?category=club_branded_equipment">Equipment/Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'home' %}?category=club_branded_clothing">Clothing</a>
+                </li>
+                <li><a class="dropdown-item"
+                        href="{% url 'home' %}?category=club_branded_equipment">Equipment/Accessories</a></li>
             </ul>
         </li>
-        <li class="nav-item content-nav-option">
-            <a class="nav-link" href="{% url 'home' %}?category=swimwear,equipment,club_branded_clothing,club_branded_equipment">Reset Filters</a>
+        <li class="nav-item content-nav-option col-sm-2">
+            <a class="nav-link"
+                href="{% url 'home' %}?category=swimwear,equipment,club_branded_clothing,club_branded_equipment">Reset
+                Filters</a>
+        </li>
+    
+    </ul>
+    
+    <ul class="col-xs d-block d-sm-none">
+        <li class="nav-item dropdown content-nav-option">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                Filter Products By:
+            </a>
+            <ul class="dropdown-menu">
+                <li class="dropdown-item"><a href="{% url 'home' %}?category=swimwear">Swimwear</a></li>
+                <li class="dropdown-item"><a href="{% url 'home' %}?category=equipment,club_branded_equipment">Equipment</a>
+                </li>
+                <li class="dropdown-item"><a href="{% url 'home' %}?category=club_branded_clothing">Club-Branded
+                        Clothing</a></li>
+                <li class="dropdown-item"><a href="{% url 'home' %}?category=club_branded_equipment">Club-Branded
+                        Equipment</a></li>
+                <li class="dropdown-item"><a
+                        href="{% url 'home' %}?category=swimwear,equipment,club_branded_clothing,club_branded_equipment">All
+                        Products</a></li>
+            </ul>
         </li>
     </ul>
 </div>
