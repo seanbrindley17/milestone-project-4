@@ -27,17 +27,6 @@
         <nav class="navbar navbar-expand-lg top-navbar">
             <div class="container-fluid">
 
-                <!-- Search Form visible on devices wider than 550px -->
-                <form class="d-flex d-none d-sm-block" role="search" action="" method="GET">
-                    <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
-                </form>
-
-                <!-- On smaller screens, the search bar will be replaced by a modal button -->
-                <button type="button" class="col-xs d-block d-sm-none" data-bs-toggle="modal" data-bs-target="#searchModal">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-
                 <!-- Title and Logo -->
                 <a class="navbar-brand nav-link text-center" href="{% url 'home' %}">Ware<br>Swimming Club</a>
 
@@ -93,27 +82,6 @@
             
         </nav>
     </header>
-
-    <!-- Modal -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Search</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="" method="">
-                        <input class="form-control me-2" type="text" name="q" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search <i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     {% block page_header %}
     {% endblock %}
