@@ -48,7 +48,8 @@
                 <!-- information about the items in the summary -->
                 <div class="col-5">
                     <p class="my-0">{{ item.product.name }}</p>
-                    <p class="my-0 small">Size: {% if item.product.has_sizes %}{{ item.size }}{% elif item.product.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
+                    <!-- Issue here with size not being displayed correctly -->
+                    <p class="my-0 small">Size: {% if item.has_sizes %}{{ item.size }}{% elif item.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
                     <p class="my-0 small">Quantity: {{ item.quantity }}</p>
                 </div>
                 <!-- Summary subtotal -->

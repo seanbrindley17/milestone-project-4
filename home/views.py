@@ -9,6 +9,8 @@ from .models import Category, Product
 def index(request):
     products = Product.objects.all()
 
+    products = products.order_by("name")
+
     context = {"products": products}
 
     return render(request, "home/index.html", context)
