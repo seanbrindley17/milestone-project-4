@@ -126,7 +126,7 @@ def view_checkout(request):
     context = {
         "order_form": order_form,
         "stripe_public_key": stripe_public_key,
-        "client_secret": "intent.client_secret",
+        "client_secret": intent.client_secret,
         "order_cost": order_cost,
         "delivery_charge": delivery_charge,
         "total_cost": total_cost,
