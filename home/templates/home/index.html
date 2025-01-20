@@ -15,18 +15,21 @@
 <div class="container row my-auto justify-content-center">
     <ul class="nav nav-pills flex-column flex-sm-row content-nav text-center">
         <li class="nav-item content-nav-option">
-            <a class="nav-link" href="#">Swimwear</a>
+            <a class="nav-link" href="{% url 'home' %}?category=swimwear">Swimwear</a>
         </li>
         <li class="nav-item content-nav-option">
-            <a class="nav-link" href="#">Equipment</a>
+            <a class="nav-link" href="{% url 'home' %}?category=equipment,club_branded_equipment">Equipment</a>
         </li>
         <li class="nav-item dropdown content-nav-option">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                 aria-expanded="false">Club-Branded</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Clothing</a></li>
-                <li><a class="dropdown-item" href="#">Equipment/Accessories</a></li>
+                <li><a class="dropdown-item" href="{% url 'home' %}?category=club_branded_clothing">Clothing</a></li>
+                <li><a class="dropdown-item" href="{% url 'home' %}?category=club_branded_equipment">Equipment/Accessories</a></li>
             </ul>
+        </li>
+        <li class="nav-item content-nav-option">
+            <a class="nav-link" href="{% url 'home' %}?category=swimwear,equipment,club_branded_clothing,club_branded_equipment">Reset Filters</a>
         </li>
     </ul>
 </div>

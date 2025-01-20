@@ -8,10 +8,21 @@ from .models import Category, Product
 
 def index(request):
     products = Product.objects.all()
+    categories = None
 
+    # For filtering by category
+    if request.GET:
+        categories = request.GET["category"].split(",")
+        products = products.filter(category__name__in=categories)
+        categories = Category.objects.filter(name__in=categories)
+
+    # Ensures products are always ordered alphabetically
     products = products.order_by("name")
 
-    context = {"products": products}
+    context = {
+        "products": products,
+        "currect_categories": categories,
+    }
 
     return render(request, "home/index.html", context)
 
