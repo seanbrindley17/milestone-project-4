@@ -33,10 +33,30 @@ form.addEventListener("submit", function(ev) {
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
+            // billing details and shipping from form data to be used with webhooks
             billing_details: {
+                name: $.trim(form.name.value),
+                surname: $.trim(form.surname.value),
+                phone: $.trim(form.phone_number.value),
+                email: $.trim(form.email.value),
                 address: {
-                    country: "GB"
+                    line_one: $.trim(form.address_line_one.value),
+                    line_two: $.trim(form.address_line_two.value),
+                    town: $.trim(form.town_or_city.value),
+                    country: "GB",
                 }
+            }
+        },
+        shipping: {
+           name: $.trim(form.name.value),
+            surname: $.trim(form.surname.value),
+            phone: $.trim(form.phone_number.value),
+            address: {
+                line_one: $.trim(form.address_line_one.value),
+                line_two: $.trim(form.address_line_two.value),
+                town: $.trim(form.town_or_city.value),
+                postcode: $.trim(form.postcode.value),
+                country: "GB", 
             }
         }
     }).then(function(result) {
