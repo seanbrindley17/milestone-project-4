@@ -40,7 +40,7 @@ form.addEventListener("submit", function(ev) {
         "client_secret": clientSecret,
         "save_info": saveInfo,
     };
-    const url = "/checkout/cache_checkout_data";
+    const url = "/checkout/cache_checkout_data/";
     // Post data to url above using postData above
     // Uses .done to call function that will be executed if view has success response
     // Basically means execute stripe function if all goes to plan
@@ -63,7 +63,7 @@ form.addEventListener("submit", function(ev) {
                 }
             },
             shipping: {
-               name: $.trim(form.name.value),
+                name: $.trim(form.name.value),
                 surname: $.trim(form.surname.value),
                 phone: $.trim(form.phone_number.value),
                 address: {
