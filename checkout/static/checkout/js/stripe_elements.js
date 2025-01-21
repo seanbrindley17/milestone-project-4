@@ -41,6 +41,8 @@ form.addEventListener("submit", function(ev) {
         "save_info": saveInfo,
     };
     const url = "/checkout/cache_checkout_data/";
+    // Concatenate name and surname to fullName as Stripe doesn't accept surname field
+    const fullName = "${$.trim(form.name.value)} ${$.trim(form.surname.value)}";
     // Post data to url above using postData above
     // Uses .done to call function that will be executed if view has success response
     // Basically means execute stripe function if all goes to plan
@@ -50,27 +52,25 @@ form.addEventListener("submit", function(ev) {
                 card: card,
                 // billing details and shipping from form data to be used with webhooks
                 billing_details: {
-                    name: $.trim(form.name.value),
-                    surname: $.trim(form.surname.value),
+                    name: fullName,
                     phone: $.trim(form.phone_number.value),
                     email: $.trim(form.email.value),
                     address: {
-                        line_one: $.trim(form.address_line_one.value),
-                        line_two: $.trim(form.address_line_two.value),
-                        town: $.trim(form.town_or_city.value),
+                        line1: $.trim(form.address_line_one.value),
+                        line2: $.trim(form.address_line_two.value),
+                        city: $.trim(form.town_or_city.value),
                         country: "GB",
                     }
                 }
             },
             shipping: {
-                name: $.trim(form.name.value),
-                surname: $.trim(form.surname.value),
+                name: fullName,
                 phone: $.trim(form.phone_number.value),
                 address: {
-                    line_one: $.trim(form.address_line_one.value),
-                    line_two: $.trim(form.address_line_two.value),
-                    town: $.trim(form.town_or_city.value),
-                    postcode: $.trim(form.postcode.value),
+                    line1: $.trim(form.address_line_one.value),
+                    line2: $.trim(form.address_line_two.value),
+                    city: $.trim(form.town_or_city.value),
+                    postal_code: $.trim(form.postcode.value),
                     country: "GB", 
                 }
             }
