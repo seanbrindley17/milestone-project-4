@@ -1,6 +1,8 @@
 import stripe
+import json
 from decimal import Decimal
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
 from home.models import Product
@@ -10,6 +12,29 @@ from .forms import OrderForm
 
 
 # Create your views here.
+
+
+@require_POST
+def cache_checkout_data(request):
+    try:
+        # Gets payment intent id by splitting client secret and taking the first element in that new array
+        pid = request.POST.get("client_secret").split("_secret")[0]
+        # set up stripe with secret key to be able to modify payment intent
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        # Modify by calling the "pid" variable and tell it which data to modify
+        stripe.PaymentIntent.modify(
+            pid,
+            metadata={
+                "trolley": json.dumps(request.session.get("trolley", {})),
+                "save_info": request.POST.get("save_info"),
+                "username": request.user,
+            },
+        )
+        return HttpResponse(status=200)
+    except Exception as e:
+        messages.error(request, "Payment cannot be proccessed. Try again later")
+        # return 400 for a bad request
+        return HttpResponse(content=e, status=400)
 
 
 # View for the checkout
