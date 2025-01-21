@@ -165,6 +165,7 @@ STRIPE_CURRENCY = "gbp"
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback_secret")
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
