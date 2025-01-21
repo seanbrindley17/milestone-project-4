@@ -66,4 +66,7 @@ Return to [README](README.md)
         Instead of `<img src="{{ MEDIA_URL }}default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">`, I'm using `<img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">`.
 
 * The checkout page wasn't loading when I was trying to render the template and the context like this `return render(request, context, template)`
-    * FIX: I didn't explictly find a solution but noticed when trawling through that context was always the last argument rendered, so I tried this and it seemed to work.
+    * FIX: I didn't explictly find a solution but noticed when trawling through stackonline posts and other examples that context was always the last argument rendered, so I tried this and it seemed to work.
+
+* Stripe threw this error: ![unknown parameter surname](/readme-documentation/screenshots/bugs-and-issues/checkout/unknown-parameter-surname.png)
+    * FIX: I eventually found out that surname is actually just not an accepted parameter for the stripe billing details. I wasn't aware they had to be preset because the walkthrough said nothing about it.
