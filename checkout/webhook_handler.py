@@ -3,8 +3,7 @@ from django.http import HttpResponse
 from .models import Order, OrderItem
 from home.models import Product
 
-# pre empt creation of userprofile model, currently doesn't exist
-from profiles.models import UserProfile
+# from profiles.models import UserProfile
 
 
 class stripe_webhook_handler:
