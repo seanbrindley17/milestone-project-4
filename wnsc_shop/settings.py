@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "trolley",
     "checkout",
     "contact",
+    "profiles",
 ]
 
 MIDDLEWARE = [
