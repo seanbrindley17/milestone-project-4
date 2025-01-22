@@ -1,6 +1,9 @@
 import stripe
 from django.http import HttpResponse
 
+# pre empt creation of userprofile model, currently doesn't exist
+from profiles.models import UserProfile
+
 
 class stripe_webhook_handler:
     # init method called every time instance of class is created
@@ -32,6 +35,19 @@ class stripe_webhook_handler:
         for field, value in shipping_details.address.items():
             if value == "":
                 shipping_details.address[field] = None
+
+        profile = None
+        username = intent.metadata.username
+        if username != "AnonymousUser":
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
 
         return HttpResponse(content=f"Webhook received: {event['type']}", status=200)
 
