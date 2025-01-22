@@ -96,6 +96,7 @@ def view_checkout(request):
                                 quantity=quantity,
                                 product_size=shoesize,
                             )
+                            order_item.save()
                 except Product.DoesNotExist:
                     messages.error(
                         request,
