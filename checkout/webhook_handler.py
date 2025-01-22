@@ -1,5 +1,7 @@
 import stripe
 from django.http import HttpResponse
+from .models import Order, OrderItem
+from home.models import Product
 
 # pre empt creation of userprofile model, currently doesn't exist
 from profiles.models import UserProfile
@@ -48,6 +50,81 @@ class stripe_webhook_handler:
                 profile.default_street_address2 = shipping_details.address.line2
                 profile.default_county = shipping_details.address.state
                 profile.save()
+        # Assumes order doesn't exist
+        order_exists = False
+        # Retrieve order from payment intent
+        # __iexact looks for an exact match but is case insensitive
+        try:
+            order = Order.objects.get(
+                full_name__iexact=shipping_details.name,
+                email__iexact=billing_details.email,
+                phone_number__iexact=shipping_details.phone,
+                country__iexact=shipping_details.address.country,
+                postcode__iexact=shipping_details.address.postal_code,
+                town_or_city__iexact=shipping_details.address.city,
+                street_address1__iexact=shipping_details.address.line1,
+                street_address2__iexact=shipping_details.address.line2,
+                total_cost=total_cost,
+                original_trolley=trolley,
+                stripe_pid=pid,
+            )
+            # if order is found set order exists to true
+            order_exists = True
+            return HttpResponse(
+                content=f"Webhook received: {event["type"]} | Order already in database. ",
+                status=200,
+            )
+        # If order doesn't exist, create it
+        except Order.DoesNotExist:
+            try:
+                order = Order.objects.create(
+                    full_name=shipping_details.name,
+                    email=billing_details.email,
+                    phone_number=shipping_details.phone,
+                    country=shipping_details.address.country,
+                    postcode=shipping_details.address.postal_code,
+                    town_or_city=shipping_details.address.city,
+                    street_address1=shipping_details.address.line1,
+                    street_address2=shipping_details.address.line2,
+                )
+                # Same code as from the view except loading from json intent
+                for item_id, item_data in json.loads(trolley).items():
+                    # Get the item id to determine whether it has sizes, shoesizes or not
+                    product = Product.objects.get(id=item_id)
+                    # if item_data is an integer, it doesn't have a size
+                    if isinstance(item_data, int):
+                        order_item = OrderItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_item.save()
+                    elif isinstance(item_data["items_by_size"]):
+                        for size, quantity in item_data["items_by_size"].items():
+                            order_item = OrderItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=size,
+                            )
+                            order_item.save()
+                    else:
+                        for shoesize, quantity in item_data[
+                            "items_by_shoesize"
+                        ].items():
+                            order_item = OrderItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                product_size=shoesize,
+                            )
+                            order_item.save()
+            except Exception as e:
+                if order:
+                    order.delete()
+                return HttpResponse(
+                    content=f"Webhook received {event["type"]} | Error: {e}", status=500
+                )
 
         return HttpResponse(content=f"Webhook received: {event['type']}", status=200)
 
