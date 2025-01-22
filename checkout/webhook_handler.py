@@ -1,4 +1,6 @@
 import stripe
+import json
+import time
 from django.http import HttpResponse
 from .models import Order, OrderItem
 from home.models import Product
@@ -87,6 +89,7 @@ class stripe_webhook_handler:
             )
         # Otherwise, this is where the order is created by the webhook
         else:
+            order = None
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
@@ -97,6 +100,9 @@ class stripe_webhook_handler:
                     town_or_city=shipping_details.address.city,
                     street_address1=shipping_details.address.line1,
                     street_address2=shipping_details.address.line2,
+                    total_cost=total_cost,
+                    original_trolley=trolley,
+                    stripe_pid=pid,
                 )
                 # Same code as from the view except loading from json intent
                 for item_id, item_data in json.loads(trolley).items():
