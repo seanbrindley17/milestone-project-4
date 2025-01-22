@@ -63,7 +63,12 @@ def view_checkout(request):
         order_form = OrderForm(form_data)
         # Will save the order form if it's valid
         if order_form.is_valid():
-            order = order_form.save()
+            order = order_form.save(commit=False)
+            # Get payment intent by splitting at the secret
+            pid = request.POST.get("client_secret").split("_secret")[0]
+            order.stripe_pid = pid
+            order.original_trolley = json.dumps(trolley)
+            order.save()
             # Loop through items in trolley
             for item_id, item_data in trolley.items():
                 try:
