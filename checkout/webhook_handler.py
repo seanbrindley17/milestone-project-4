@@ -52,30 +52,42 @@ class stripe_webhook_handler:
                 profile.save()
         # Assumes order doesn't exist
         order_exists = False
-        # Retrieve order from payment intent
-        # __iexact looks for an exact match but is case insensitive
-        try:
-            order = Order.objects.get(
-                full_name__iexact=shipping_details.name,
-                email__iexact=billing_details.email,
-                phone_number__iexact=shipping_details.phone,
-                country__iexact=shipping_details.address.country,
-                postcode__iexact=shipping_details.address.postal_code,
-                town_or_city__iexact=shipping_details.address.city,
-                street_address1__iexact=shipping_details.address.line1,
-                street_address2__iexact=shipping_details.address.line2,
-                total_cost=total_cost,
-                original_trolley=trolley,
-                stripe_pid=pid,
-            )
-            # if order is found set order exists to true
-            order_exists = True
+        attempt = 1
+        # While loop attempts to find the order 5 times
+        while attempt <= 5:
+            # Retrieve order from payment intent
+            # __iexact looks for an exact match but is case insensitive
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=shipping_details.phone,
+                    country__iexact=shipping_details.address.country,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    town_or_city__iexact=shipping_details.address.city,
+                    street_address1__iexact=shipping_details.address.line1,
+                    street_address2__iexact=shipping_details.address.line2,
+                    total_cost=total_cost,
+                    original_trolley=trolley,
+                    stripe_pid=pid,
+                )
+                # if order is found set order exists to true
+                order_exists = True
+                break
+
+            # If order doesn't exist, create it
+            except Order.DoesNotExist:
+                attempt += 1
+                # After each attempt, wait for one second before trying again
+                time.sleep(1)
+        # Will display webhook if order exists now
+        if order_exists:
             return HttpResponse(
                 content=f"Webhook received: {event["type"]} | Order already in database. ",
                 status=200,
             )
-        # If order doesn't exist, create it
-        except Order.DoesNotExist:
+        # Otherwise, this is where the order is created by the webhook
+        else:
             try:
                 order = Order.objects.create(
                     full_name=shipping_details.name,
@@ -123,10 +135,14 @@ class stripe_webhook_handler:
                 if order:
                     order.delete()
                 return HttpResponse(
-                    content=f"Webhook received {event["type"]} | Error: {e}", status=500
+                    content=f"Webhook received {event["type"]} | Error: {e}",
+                    status=500,
                 )
 
-        return HttpResponse(content=f"Webhook received: {event['type']}", status=200)
+            return HttpResponse(
+                content=f"Webhook received: {event["type"]} | Created order in webhook",
+                status=200,
+            )
 
     # handles payment_intent.payment_failed webhook
     def handle_payment_intent_payment_failed(self, event):
