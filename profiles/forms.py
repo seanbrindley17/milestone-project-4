@@ -11,16 +11,18 @@ class UserProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         placeholders = {
-            "default_phone_number": "Phone Number",
-            "default_postcode": "Postcode",
-            "default_town_or_city": "Town Or City",
-            "default_address_line_one": "Address Line 1",
-            "default_address_line_two": "Address Line 2",
-            "default_county": "County",
+            "name": "Name",
+            "surname": "Surname",
+            "phone_number": "Phone Number",
+            "postcode": "Postcode",
+            "town_or_city": "Town Or City",
+            "address_line_one": "Address Line 1",
+            "address_line_two": "Address Line 2",
+            "county": "County",
         }
 
         # Sets the cursor autofocus to the "name" field when page is loaded
-        self.fields["default_phone_number"].widget.attrs["autofocus"] = True
+        self.fields["phone_number"].widget.attrs["autofocus"] = True
         for field in self.fields:
             if self.fields[field].required:
                 # Adds a * to required fields
