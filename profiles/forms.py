@@ -1,0 +1,33 @@
+from django import forms
+from .models import UserProfile
+
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        # Renders all fields except user field
+        exclude = ("user",)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        placeholders = {
+            "default_phone_number": "Phone Number",
+            "default_postcode": "Postcode",
+            "default_town_or_city": "Town Or City",
+            "default_address_line_one": "Address Line 1",
+            "default_address_line_two": "Address Line 2",
+            "default_county": "County",
+        }
+
+        # Sets the cursor autofocus to the "name" field when page is loaded
+        self.fields["default_phone_number"].widget.attrs["autofocus"] = True
+        for field in self.fields:
+            if self.fields[field].required:
+                # Adds a * to required fields
+                placeholder = f"{placeholders[field]} *"
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs["placeholder"] = placeholder
+            # Removes default form field labels
+            self.fields[field].label = False
+            self.fields[field].widget.attrs["class"] = "profile-form-input"
