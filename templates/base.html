@@ -48,11 +48,11 @@
                         <!-- Will make relevant options invisible for logged in/out users -->
                         <div class="dropdown-menu" aria-labelledby="user-options">
                             <!-- Only visible to logged out users -->
-                            <a href="#" class="dropdown-item">Sign Up</a>
-                            <a href="#" class="dropdown-item">Log In</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Sign Up</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Log In</a>
                             <!-- Only visible to logged in users -->
-                            <a href="#" class="dropdown-item">Account</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="{% url 'profile' %}" class="dropdown-item">Account</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Log Out</a>
                         </div>
                     </li>
                 </ul>
