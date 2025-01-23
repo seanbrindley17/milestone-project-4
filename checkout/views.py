@@ -7,6 +7,8 @@ from django.contrib import messages
 from django.conf import settings
 from home.models import Product
 from trolley.contexts import trolley_items
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
 from .models import Order, OrderItem
 from .forms import OrderForm
 
@@ -151,6 +153,26 @@ def view_checkout(request):
     if not stripe_public_key:
         messages.warning(request, "Stripe Public Key is missing!")
 
+    # Prefills fields for authenticated users
+    if request.user.is_authenticated:
+        try:
+            profile = UserProfile.objects.get(user=request.user)
+            order_form = OrderForm(
+                initial={
+                    "name": profile.name,
+                    "surname": profile.surname,
+                    "email": profile.user_email,
+                    "phone_number": profile.phone_number,
+                    "town_or_city": profile.town_or_city,
+                    "street_address_one": profile.address_line_one,
+                    "street_address_two": profile.address_line_two,
+                    "postcode": profile.postcode,
+                    "county": profile.county,
+                }
+            )
+        except UserProfile.DoesNotExist:
+            order_form = OrderForm()
+
     # Order form available in view
     order_form = OrderForm()
 
@@ -174,6 +196,28 @@ def checkout_success(request, order_number):
     save_info = request.session.get("save_info")
     # Gets the order using the order number in the Order model
     order = get_object_or_404(Order, order_number=order_number)
+
+    if request.user.is_authenticated:
+        # Gets user's profile and sets the order to it and saves. Allows retrieval
+        profile = UserProfile.objects.get(user=request.user)
+        order.user_profile = profile
+        order.save()
+
+        if save_info:
+            profile_data = {
+                "name": order.name,
+                "surname": order.surname,
+                "phone_number": order.phone_number,
+                "postcode": order.postcode,
+                "town_or_city": order.town_or_city,
+                "address_line_one": order.address_line_one,
+                "address_line_two": order.address_line_two,
+                "county": order.county,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
     messages.success(
         request,
         f"Order placed! \
