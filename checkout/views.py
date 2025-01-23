@@ -172,7 +172,6 @@ def view_checkout(request):
             )
         except UserProfile.DoesNotExist:
             order_form = OrderForm()
-
     # Order form available in view
     order_form = OrderForm()
 

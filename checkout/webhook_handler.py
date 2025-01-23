@@ -2,8 +2,10 @@ import stripe
 import json
 import time
 from django.http import HttpResponse
-from .models import Order, OrderItem
+from profiles.models import UserProfile
 from home.models import Product
+from .models import Order, OrderItem
+
 
 # from profiles.models import UserProfile
 
@@ -39,17 +41,19 @@ class stripe_webhook_handler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # Allows webhook to handle user profile info
         profile = None
         username = intent.metadata.username
         if username != "AnonymousUser":
             profile = UserProfile.objects.get(user__username=username)
+            # Only happens if user has checked save info box
             if save_info:
-                profile.default_phone_number = shipping_details.phone
-                profile.default_postcode = shipping_details.address.postal_code
-                profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
-                profile.default_county = shipping_details.address.state
+                profile.phone_number = shipping_details.phone
+                profile.postcode = shipping_details.address.postal_code
+                profile.town_or_city = shipping_details.address.city
+                profile.street_address1 = shipping_details.address.line1
+                profile.street_address2 = shipping_details.address.line2
+                profile.county = shipping_details.address.state
                 profile.save()
         # Assumes order doesn't exist
         order_exists = False
@@ -60,6 +64,7 @@ class stripe_webhook_handler:
             # __iexact looks for an exact match but is case insensitive
             try:
                 order = Order.objects.get(
+                    user_profile=profile,
                     full_name__iexact=shipping_details.name,
                     email__iexact=billing_details.email,
                     phone_number__iexact=shipping_details.phone,
