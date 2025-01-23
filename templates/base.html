@@ -66,11 +66,11 @@
                         <!-- Need to add Django for loop to show relevant options -->
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="user-options-mobile">
                             <!-- Only visible to logged out users -->
-                            <a href="#" class="dropdown-item">Sign Up</a>
-                            <a href="#" class="dropdown-item">Log In</a>
+                            <a href="{% url 'account_signup' %}" class="dropdown-item">Sign Up</a>
+                            <a href="{% url 'account_login' %}" class="dropdown-item">Log In</a>
                             <!-- Only visible to logged in users -->
-                            <a href="#" class="dropdown-item">Account</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="{% url 'profile' %}" class="dropdown-item">Account</a>
+                            <a href="{% url 'account_logout' %}" class="dropdown-item">Log Out</a>
                             <!-- Visible at all times --> 
                             <a href="#" class="dropdown-item">Club Site</a>
                             <a href="{% url 'show_trolley' %}" class="dropdown-item">Trolley</a>
