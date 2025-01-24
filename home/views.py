@@ -60,12 +60,24 @@ def add_product(request):
     return render(request, template, context)
 
 
+# View for an admin to edit a product
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    form = ProductForm
+
+    if request.method == "POST":
+        # On a edit form post request, pre fill using instance of product got above using product id
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Edit successful")
+            return redirect(reverse("product_detail", args=[product_id]))
+        else:
+            messages.error(request, "Error editing product, double check fields")
+
+    form = ProductForm(instance=product)
     messages.info(request, f"Editing {product.name}")
 
-    template = "products/edit_product.html"
+    template = "home/edit_product.html"
     context = {
         "form": form,
         "product": product,
