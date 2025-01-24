@@ -3,7 +3,7 @@ from .models import Product, Category
 
 
 # Form for admin user to modify store products
-class Product(forms.ModelForm):
+class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
