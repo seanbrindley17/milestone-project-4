@@ -17,11 +17,11 @@
         <div class="col col-sm-4">
             <div class="container my-5">
                 {% if product.image %}
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                 {% elif product.image_url %}
-                    <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                 {% else %}
-                    <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                 {% endif %}
             </div>
         </div>
@@ -38,7 +38,7 @@
                 <!-- If statement to display sizes if product has sizes -->
                 {% with product.has_sizes as sizes %}
                 {% if sizes %}
-                    <div class="col-12">
+                <div class="col-12">
                     <select id="product-size" name="product-size" class="form-select" aria-label="select-size">
                         <option selected>Choose Size:</option>
                         <option value="extra-small">XS</option>
@@ -47,23 +47,23 @@
                         <option value="large">L</option>
                         <option value="extra-large">XL</option>
                     </select>
-                    </div>
+                </div>
                 {% endif %}
                 <!-- If statement for different size type if the user selects fins -->
                 {% with product.is_footwear as fins %}
                 {% if fins %}
-                    <div class="col-12">
-                        <select name="shoe-size" id="shoe-size" class="form-select" aria-label="select-shoe-size">
-                            <option selected>Choose Size:</option>
-                            <option value="3-4">3-4</option>
-                            <option value="4.5-5.5">4.5-5.5</option>
-                            <option value="6-7">6-7</option>
-                            <option value="7.5-8.5">7.5-8.5</option>
-                            <option value="9-10">9-10</option>
-                            <option value="10.5-11.5">10.5-11.5</option>
-                            <option value="12-13">12-13</option>
-                        </select>
-                    </div>
+                <div class="col-12">
+                    <select name="shoe-size" id="shoe-size" class="form-select" aria-label="select-shoe-size">
+                        <option selected>Choose Size:</option>
+                        <option value="3-4">3-4</option>
+                        <option value="4.5-5.5">4.5-5.5</option>
+                        <option value="6-7">6-7</option>
+                        <option value="7.5-8.5">7.5-8.5</option>
+                        <option value="9-10">9-10</option>
+                        <option value="10.5-11.5">10.5-11.5</option>
+                        <option value="12-13">12-13</option>
+                    </select>
+                </div>
                 {% endif %}
                 <!-- Product Quantity -->
                 <div class="row">
@@ -71,32 +71,60 @@
                         <span>Select Quantity:</span>
                     </div>
                     <div class="col-6">
-                        <input type="number" class="form-control quantity-input" name="product-quantity" value="1" min="1" max="99">
+                        <input type="number" class="form-control quantity-input" name="product-quantity" value="1"
+                            min="1" max="99">
                     </div>
                 </div>
                 <!-- Product Personalisation if applicable -->
-                 {% if product.is_personalised %}
-                    <span>Enter Name: (Min: 2 - Max: 14 Characters)</span>
-                    <input type="text" class="form-control personalisation-input" name="product-personalisation-input" value="" minlength="2" maxlength="14">
-                 {% endif %}
+                {% if product.is_personalised %}
+                <span>Enter Name: (Min: 2 - Max: 14 Characters)</span>
+                <input type="text" class="form-control personalisation-input" name="product-personalisation-input"
+                    value="" minlength="2" maxlength="14">
+                {% endif %}
                 <!-- Product Price -->
                 <div class="col-12 text-right">
                     <p>£{{ product.price }}</p>
                 </div>
                 <!-- Add to trolley and go back buttons -->
-                 <div class="col-12">
+                <div class="col-12">
                     <!-- Go Back -->
                     <a href="{% url 'home' %}" class="btn">
                         Back To Shop
                     </a>
                     <!-- Add To Trolley -->
                     <input type="submit" class="btn" name="" value="Add To Trolley">
-                 </div>
-                 <!-- Hidden input to send user to Product detail page of product just added -->
-                 <input type="hidden" name="return-url" value="{{ request.path }}">
-                 {% endwith %}
-                 {% endwith %}
+                </div>
+                <!-- Hidden input to send user to Product detail page of product just added -->
+                <input type="hidden" name="return-url" value="{{ request.path }}">
+                {% endwith %}
+                {% endwith %}
             </form>
+        </div>
+        <!-- Gives admin ability to edit and delete product from the product detail page -->
+        {% if request.user.is_superuser %}
+        <a href="{% url 'edit_product' product.id %}" class="btn custom-button">Edit Product Details</a>
+        <a href="#deleteProductModel-{{ product.id }}" data-bs-toggle="model" class="btn custom-button">Delete
+            Product</a>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Delete product modal -->
+<div class="modal fade" id="deleteItemModal-{{ product.id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Product</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete {{ product.name }} from the database?</p>
+                <hr>
+                <div>
+                    <a href="{% url 'delete_product' product.id %}" class="btn custom-button">Yes, Delete product</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" class="btn">No, Go Back!</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
