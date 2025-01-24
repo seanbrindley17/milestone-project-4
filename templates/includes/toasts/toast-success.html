@@ -19,7 +19,13 @@
             {% for item in items_in_trolley %}
             <div class="row">
                 <div class="col-3 my-1">
-                    <img class="w-100" src="{{ item.product.image_url }}">
+                    {% if item.product.image %}
+                        <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                    {% elif item.product.image_url %}
+                        <img src="{{ item.product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                    {% else %}
+                        <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                    {% endif %}
                 </div>
                 <div class="col-9">
                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
