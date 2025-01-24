@@ -1,0 +1,21 @@
+This is a confirmation email from WSC regarding your purchase {{ order.order_number }} on {{ order.date }}.
+
+Order Cost: {{ order_cost }}
+Delivery: {{ delivery_charge }}
+
+Total Cost: {{ total_cost }}
+
+
+
+This order is being sent to:
+{{ order.street_address_one }}
+{{ order.town_or_city }}
+{{ order.county }}
+{{ order.postcode }}
+
+
+
+We thank you for your order!
+
+Regards,
+Ware Swimming Club
