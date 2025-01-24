@@ -38,7 +38,7 @@ def product_detail(request, product_id):
 
 def add_product(request):
     form = ProductForm
-    template = "home/add.product.html"
+    template = "home/add_product.html"
     context = {
         "form": form,
     }
