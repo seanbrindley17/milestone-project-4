@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 
 from .models import Category, Product
+from .forms import ProductForm
 
 # Create your views here.
 
@@ -33,3 +34,13 @@ def product_detail(request, product_id):
     context = {"product": product}
 
     return render(request, "home/product_detail.html", context)
+
+
+def add_product(request):
+    form = ProductForm
+    template = "home/add.product.html"
+    context = {
+        "form": form,
+    }
+
+    return render(request, template, context)
