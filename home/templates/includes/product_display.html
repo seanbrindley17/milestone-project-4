@@ -22,12 +22,12 @@
                 <!-- Gives admin ability to edit and delete product from the product detail page -->
                 {% if request.user.is_superuser %}
                 <a href="{% url 'edit_product' product.id %}" class="btn custom-button">Edit Product Details</a>
-                <a href="#deleteProductModel-{{ product.id }}" data-bs-toggle="model" class="btn custom-button">Delete
+                <a href="#deleteProductModal-{{ product.id }}" data-bs-toggle="modal" class="btn custom-button">Delete
                     Product</a>
                 {% endif %}
             </div>
             <!-- Delete Product modal -->
-            <div class="modal fade" id="deleteItemModal-{{ product.id }}" tabindex="-1"
+            <div class="modal fade" id="deleteProductModal-{{ product.id }}" tabindex="-1"
                 aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -40,7 +40,7 @@
                             <div>
                                 <a href="{% url 'delete_product' product.id %}" class="btn custom-button">Yes, Delete
                                     product</a>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" class="btn">No, Go
+                                <button type="button" class="" data-bs-dismiss="modal" class="btn">No, Go
                                     Back!</button>
                             </div>
                         </div>
