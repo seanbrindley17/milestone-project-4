@@ -71,3 +71,5 @@ Return to [README](README.md)
 * Stripe threw this error: ![unknown parameter surname](/readme-documentation/screenshots/bugs-and-issues/checkout/unknown-parameter-surname.png)
     * FIX: I eventually found out that surname is actually just not an accepted parameter for the stripe billing details. I wasn't aware they had to be preset because the walkthrough said nothing about it.
         * Furthermore, other fields needed changing. Nothing about Stripe requiring specific fields was mentioned in the walkthroughs.
+
+* I encountered an error when trying to impliment delete product logic. Which was `"Page not found at /"` after deleting a product.
