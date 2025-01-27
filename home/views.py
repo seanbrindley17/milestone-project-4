@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from .models import Category, Product
 from .forms import ProductForm
@@ -37,6 +38,7 @@ def product_detail(request, product_id):
 
 
 # View for an admin to add product to store
+@login_required
 def add_product(request):
 
     if request.method == "POST":
@@ -61,6 +63,7 @@ def add_product(request):
 
 
 # View for an admin to edit a product
+@login_required
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
@@ -86,6 +89,8 @@ def edit_product(request, product_id):
     return render(request, template, context)
 
 
+# View to allow an admin to delete products from the database
+@login_required
 def delete_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
