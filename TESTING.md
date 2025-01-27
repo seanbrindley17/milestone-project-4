@@ -72,4 +72,6 @@ Return to [README](README.md)
     * FIX: I eventually found out that surname is actually just not an accepted parameter for the stripe billing details. I wasn't aware they had to be preset because the walkthrough said nothing about it.
         * Furthermore, other fields needed changing. Nothing about Stripe requiring specific fields was mentioned in the walkthroughs.
 
-* I encountered an error when trying to impliment delete product logic. Which was `"Page not found at /"` after deleting a product.
+* I encountered an error when trying to impliment delete product logic. Which was `"Page not found at /"` after deleting a product. ![error after deleting](/readme-documentation/screenshots/bugs-and-issues/general/after-delete-issue.png)
+    * At the moment I cannot do anything on my site, all I get is a 404 saying not found: /. Nothing I have tried has helped so it looks like I'm stuffed.
+        * FIX!: Turns out I had deleted a product that still existed in a trolley session, the site was trying to find something that didn't exist. Found here using the django debug toolbar. ![found deleted item in session data](/readme-documentation/screenshots/bugs-and-issues/general/deleted-item-in-trolley.png)
