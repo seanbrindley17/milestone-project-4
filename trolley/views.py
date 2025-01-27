@@ -32,6 +32,11 @@ def add_to_trolley(request, item_id):
     # Access session to check if trolley variable exists, if not initialise empty dictionary
     trolley = request.session.get("trolley", {})
 
+    for product_id in list(trolley.keys()):
+        if not Product.objects.filter(id=product_id).exists:
+            del trolley[product_id]
+    request.session["trolley"] = trolley
+
     # If the item has a tradional sizing
     if size:
         # Check if the item is in the trolley by looking to see if the item id matches a key in a key value pair in the trolley
