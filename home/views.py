@@ -41,6 +41,10 @@ def product_detail(request, product_id):
 @login_required
 def add_product(request):
 
+    if not request.user.is_superuser:
+        messages.error(request, "Only accessible to admins")
+        return redirect(reverse("home"))
+
     if request.method == "POST":
         # Needs request.FILES to get the image posted too
         form = ProductForm(request.POST, request.FILES)
@@ -65,6 +69,11 @@ def add_product(request):
 # View for an admin to edit a product
 @login_required
 def edit_product(request, product_id):
+
+    if not request.user.is_superuser:
+        messages.error(request, "Only accessible to admins")
+        return redirect(reverse("home"))
+
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == "POST":
@@ -92,6 +101,11 @@ def edit_product(request, product_id):
 # View to allow an admin to delete products from the database
 @login_required
 def delete_product(request, product_id):
+
+    if not request.user.is_superuser:
+        messages.error(request, "Only accessible to admins")
+        return redirect(reverse("home"))
+
     product = get_object_or_404(Product, pk=product_id)
     product.delete()
     messages.success(request, "Product deleted")
