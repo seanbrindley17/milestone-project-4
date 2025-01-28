@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-qx-zq^m$#aue_lxe*(*vb-oy5jj1coopruz5-@s9xntnlrm$v%"
+SECRET_KEY = os.environ.get("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -170,7 +170,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = "gbp"
-SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback_secret")
 STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
 STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
