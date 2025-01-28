@@ -30,7 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "milestone-project-4-sb.com",
-    "https://milestone-project-4-sb-1448d349aa27.herokuapp.com",
+    "milestone-project-4-sb-1448d349aa27.herokuapp.com",
     "localhost",
 ]
 
