@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [
     "milestone-project-4-sb.com",
     "milestone-project-4-sb-1448d349aa27.herokuapp.com",
     "localhost",
+    "127.0.0.1",
 ]
 
 
@@ -223,5 +224,15 @@ LOGGING = {
     "root": {
         "handlers": ["console"],
         "level": "DEBUG",
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
+        "storages.backends.s3boto3": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+        },
     },
 }
