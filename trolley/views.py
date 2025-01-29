@@ -25,10 +25,6 @@ def add_to_trolley(request, item_id):
     if "shoe_size" in request.POST:
         shoesize = request.POST["shoe-size"]
 
-    personalisation = None
-    if "product_personalisation_input" in request.POST:
-        personalisation = request.POST["product-personalisation-input"]
-
     # Access session to check if trolley variable exists, if not initialise empty dictionary
     trolley = request.session.get("trolley", {})
 

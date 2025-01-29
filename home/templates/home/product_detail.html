@@ -75,12 +75,6 @@
                             min="1" max="99">
                     </div>
                 </div>
-                <!-- Product Personalisation if applicable -->
-                {% if product.is_personalised %}
-                <span>Enter Name: (Min: 2 - Max: 14 Characters)</span>
-                <input type="text" class="form-control personalisation-input" name="product-personalisation-input"
-                    value="" minlength="2" maxlength="14">
-                {% endif %}
                 <!-- Product Price -->
                 <div class="col-12 text-right">
                     <p>£{{ product.price }}</p>
