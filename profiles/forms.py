@@ -14,6 +14,7 @@ class UserProfileForm(forms.ModelForm):
             "name": "Name",
             "surname": "Surname",
             "phone_number": "Phone Number",
+            "email": "Email",
             "postcode": "Postcode",
             "town_or_city": "Town Or City",
             "address_line_one": "Address Line 1",
@@ -22,7 +23,7 @@ class UserProfileForm(forms.ModelForm):
         }
 
         # Sets the cursor autofocus to the "name" field when page is loaded
-        self.fields["phone_number"].widget.attrs["autofocus"] = True
+        self.fields["name"].widget.attrs["autofocus"] = True
         for field in self.fields:
             if self.fields[field].required:
                 # Adds a * to required fields

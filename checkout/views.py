@@ -161,7 +161,7 @@ def view_checkout(request):
                 initial={
                     "name": profile.name,
                     "surname": profile.surname,
-                    "email": profile.user_email,
+                    "email": profile.email,
                     "phone_number": profile.phone_number,
                     "town_or_city": profile.town_or_city,
                     "street_address_one": profile.address_line_one,

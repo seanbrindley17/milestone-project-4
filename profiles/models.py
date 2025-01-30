@@ -13,6 +13,7 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=20, null=True, blank=True)
     surname = models.CharField(max_length=20, null=True, blank=True)
     phone_number = models.CharField(max_length=15, null=True, blank=True)
+    email = models.EmailField(max_length=254, null=True, blank=True)
     postcode = models.CharField(max_length=10, null=True, blank=True)
     town_or_city = models.CharField(max_length=30, null=True, blank=True)
     address_line_one = models.CharField(max_length=50, null=True, blank=True)
@@ -20,7 +21,7 @@ class UserProfile(models.Model):
     county = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.user.name
 
 
 # Signal for post_save event so that profile is either created or updated when user object is created
