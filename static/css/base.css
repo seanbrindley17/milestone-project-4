@@ -1,3 +1,7 @@
+* {
+    font-family: "Oxanium", sans-serif;
+}
+
 /* Header & Navbar
 ------------------------------------------------------------------------ */
 
@@ -33,6 +37,17 @@ header .navbar {
     background-size: cover;
     height: 300px;
     max-width: 90%;
+}
+
+/* Home Page
+------------------------------------------------------------------------ */
+
+.trolley-image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto; 
 }
 
 

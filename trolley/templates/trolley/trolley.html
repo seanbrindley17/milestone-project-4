@@ -12,18 +12,22 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Trolley</h1>
-    <h4>Delivery charge is 10%</h4>
+<hr>
+    <h2 class="text-center">Trolley</h2>
+    <hr>
     <div class="row">
-        <div class="col">
+        <div class="col-10 offset-2">
             {% if items_in_trolley %}
+            <!-- <div class="container"> -->
+            <div class="table-responsive">
              <!-- Table displaying items in user's trolley -->
-            <table>
+            <table class="table">
                 <!-- Row for table headers -->
                 <tr>
-                    <th>Item</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
+                    <th scope="col"><strong>Item</strong></th>
+                    <th scope="col"></th>
+                    <th scope="col"><strong>Quantity</strong></th>
+                    <th scope="col"><strong>Price</strong></th>
                 </tr>
                 <!-- Row for item display -->
                 {% for item in items_in_trolley %}
@@ -31,24 +35,27 @@
                 <tr>
                     <!-- First data cell contains product image and name -->
                     <td>
-                        {{ item.product.image }} <p>{{ item.product.name }}</p>
+                            <div class="">
+                                {% if item.product.image %}
+                                <img src="{{ item.product.image.url }}" alt="{{ product.name }}" class="img-fluid trolley-image">
+                                {% elif item.product.image_url %}
+                                <img src="{{ item.product.image_url }}" alt="{{ product.name }}" class="img-fluid card-img-top">
+                                {% else %}
+                                <img src="/media/default-image.jpg" alt="{{ product.name }}" class="img-fluid card-img-top">
+                                {% endif %}
+                            </div>
                     </td>
-                    <!-- 2nd cell contains current quantity and the option to increase or decrease it -->
-                    <td>
-                        <form action="{% url 'add_to_trolley' item.product.id %}" method="POST" class="form update-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="return-url" value="{% url 'show_trolley' %}">
-                            <input type="number" class="form-control quantity-input" name="product-quantity"
-                                value="{{ item.quantity }}" min="1" max="99">
-                            {% if item.product.is_personalised %}
-                            <span>Enter Name: (Min: 2 - Max: 14 Characters)</span>
-                            <input type="text" class="form-control personalisation-input" name="product-personalisation-input" value="" minlength="2" maxlength="14">
-                            {% endif %}
-                        </form>
+                    <td class="py-3">
+                        <p class=""><strong>{{ item.product.name }}</strong></p>
+                    </td>
+                    <!-- 2nd cell contains current quantity -->
+                    <td class="py-3 w-25">
+                        <input type="number" class="form-control quantity-input" name="product-quantity" value="{{ item.quantity }}" min="1"
+                            max="99" readonly>
                     </td>
                     <!-- 3rd cell contains item price -->
-                    <td>
-                        <p>{{ item.product.price }}</p>
+                    <td class="py-3">
+                        <p>£{{ item.product.price }}</p>
                     </td>
                     <td>
                         <a href="#removeItemModal-{{ item.product.id }}" class="btn" data-bs-toggle="modal">
@@ -59,10 +66,13 @@
                 {% endfor %}
                 
             </table>
+            </div>
+            <!-- </div> -->
             {% else %}
-            <p>No Items In Trolley</p>
+            <p class="text-center">No Items In Trolley</p>
             <a href="{% url 'home' %}" class="btn-lg">Back</a>
             {% endif %}
+            <em>Delivery charge is 10%</em>
             <p><strong>Total: £{{ total_cost | floatformat:2 }}</strong></p>
         </div>
     </div>
