@@ -33,9 +33,14 @@
         <div class="col-l-4 col col-sm-6 align-center">
             <div class="product-info-container my-5">
             <br>
-            <em>{{ product.category.display_name }}</em>
+            <p class="text-center">{{ product.category.display_name }}</p>
             <br>
-            <p>{{ product.description }}</p>
+            <p>Subcategory(s):</p>
+            {% for subcategory in product.subcategories.all %}
+                <em class="text-center">{{ subcategory.name }}</em><br>
+            {% endfor %}
+            <br>
+            <p class="mt-4">{{ product.description }}</p>
             </div>
         </div>
         <!-- User inputs for size etc -->
