@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .models import Category, Product
-from .forms import ProductForm
+from .forms import ProductForm, NewsletterSignupForm
 
 # Create your views here.
 
@@ -110,3 +110,16 @@ def delete_product(request, product_id):
     product.delete()
     messages.success(request, "Product deleted")
     return redirect(reverse("home"))
+
+
+def newsletter(request):
+    if request.method == "POST":
+        form = NewsletterSignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thank you for subscribing to the newsletter")
+            return redirect("home")
+        else:
+            messages.error(request, "Something went wrong, please try again.")
+
+    return redirect("home")

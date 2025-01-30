@@ -108,6 +108,17 @@
     <!-- Footer -->
     <footer class="container-fluid bottom">
         <hr>
+        <div class="row">
+            <div class="col-6 offset-3 text-center">
+                <h4>Subscribe To Our Newsletter</h4>
+                <form method="POST" action="{% url 'newsletter' %}">
+                    {% csrf_token %}
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <hr>
         <div class="row d-flex justify-content-around">
             <!-- Club Info: Full information shown to small and above devices -->
             <div class="col-sm-4 club-info d-none d-sm-block">

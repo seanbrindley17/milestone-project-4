@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Category
+from .models import Product, Category, Newsletter
 
 
 # Form for admin user to modify store products
@@ -17,3 +17,9 @@ class ProductForm(forms.ModelForm):
         ]
 
         self.fields["category"].choices = display_names
+
+
+class NewsletterSignupForm(forms.ModelForm):
+    class Meta:
+        model = Newsletter
+        fields = "__all__"
