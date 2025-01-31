@@ -5,6 +5,11 @@
 /* Header & Navbar
 ------------------------------------------------------------------------ */
 
+#header-container {
+    background-color: #17a2b8;
+    opacity: 50%;
+}
+
 div.container.nav-container {
     display: flex;
     flex-wrap: inherit;
