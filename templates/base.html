@@ -27,7 +27,7 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="container-fluid" id="header-container" style="background-color: #0caec7; z-index: -1;">
+    <header class="container-fluid" id="header-container">
         <nav class="navbar navbar-expand-lg top-navbar">
             <div class="container nav-container">
 
@@ -108,64 +108,69 @@
     <!-- Footer -->
     <footer class="container-fluid bottom">
         <hr>
-        <div class="row">
-            <div class="col-6 offset-3 text-center">
-                <h4>Subscribe To Our Newsletter</h4>
-                <form method="POST" action="{% url 'newsletter' %}">
-                    {% csrf_token %}
-                    <input type="email" name="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
+        <div id="footer-container">
+            <!-- Newsletter sign up  -->
+            <div class="row">
+                <div class="col-6 offset-3 text-center">
+                    <h4>Subscribe To Our Newsletter</h4>
+                    <form method="POST" action="{% url 'newsletter' %}">
+                        {% csrf_token %}
+                        <input type="email" name="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <hr>
-        <div class="row d-flex justify-content-around">
-            <!-- Club Info: Full information shown to small and above devices -->
-            <div class="col-sm-4 club-info d-none d-sm-block">
-                <h4>Club Info</h4>
-                <address>
+            <hr>
+            <div class="row d-flex justify-content-around bottom-footer">
+                <!-- Club Info: Full information shown to small and above devices -->
+                <div class="col-sm-4 club-info d-none d-sm-block">
+                    <h4>Club Info</h4>
+                    <address>
+                        <p>
+                            Ware Swimming Club<br>
+                            Fanshawe Pool<br>
+                            Ware<br>
+                            Hertfordshire<br>
+                            SG12 0DP
+                        </p>
+                    </address>
                     <p>
-                        Ware Swimming Club<br>
-                        Fanshawe Pool<br>
-                        Ware<br>
-                        Hertfordshire<br>
-                        SG12 0DP
+                        Email:<br>
+                        email@email.com
                     </p>
-                </address>
-                <p>
-                    Email:<br>
-                    email@email.com
-                </p>
-            </div>
-            <!-- Club Info: Reduced size for extra small screens. Possible could make into a modal button -->
-            <div class="col-xs d-block d-sm-none">
-                <p>Club Info</p>
-            </div>
-
-            <!-- Project Disclaimer -->
-            <div class="col-sm-4 text-center d-none d-sm-block">
-                <p id="project-disclaimer">
-                    <strong>IMPORTANT: No transactions will actually work as this is just a theoretical redesign for an education project.</strong>
-                </p>
-            </div>
-            <!-- Shorter Project Disclaimer for extra small screens -->
-            <div class="col-xs d-block d-sm-none">
-                <p>
-                    <strong>IMPORTANT: No payments will be accepted. Not a real shop.</strong>
-                </p>
-            </div>
-
-            <!-- Copyright -->
-            <div class="col-sm-4 copyright-info d-none d-sm-block">
-                <p>
-                    <em>Created by Sean Brindley (github icon here) for CodeInstitute's Level 5 Web Application Development diploma in Dec 2024 thru Feb 2025</em>
-                </p>
-            </div>
-            <!-- Shorter Copyright for extra small screens -->
-            <div class="col-xs d-block d-sm-none">
-                <p>
-                    <em>Created by Sean Brindley.</em>
-                </p>
+                </div>
+                <!-- Club Info: Reduced size for extra small screens. Possible could make into a modal button -->
+                <div class="col-xs d-block d-sm-none">
+                    <p>Club Info</p>
+                </div>
+    
+                <!-- Project Disclaimer -->
+                <div class="col-sm-4 text-center d-none d-sm-block">
+                    <p id="project-disclaimer">
+                        <strong>IMPORTANT: No transactions will actually work as this is just a theoretical redesign for an
+                            education project.</strong>
+                    </p>
+                </div>
+                <!-- Shorter Project Disclaimer for extra small screens -->
+                <div class="col-xs d-block d-sm-none">
+                    <p>
+                        <strong>IMPORTANT: No payments will be accepted. Not a real shop.</strong>
+                    </p>
+                </div>
+    
+                <!-- Copyright -->
+                <div class="col-sm-4 copyright-info d-none d-sm-block">
+                    <p>
+                        <em>Created by Sean Brindley (github icon here) for CodeInstitute's Level 5 Web Application
+                            Development diploma in Dec 2024 thru Feb 2025</em>
+                    </p>
+                </div>
+                <!-- Shorter Copyright for extra small screens -->
+                <div class="col-xs d-block d-sm-none">
+                    <p>
+                        <em>Created by Sean Brindley.</em>
+                    </p>
+                </div>
             </div>
         </div>
     </footer>
