@@ -1,5 +1,17 @@
+/* General/Site-wide
+------------------------------------------------------------------------ */
+
 * {
     font-family: "Oxanium", sans-serif;
+}
+
+.custom-button {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+}
+
+.custom-button:hover {
+    cursor: pointer;
 }
 
 /* Header & Navbar
@@ -83,6 +95,10 @@ header .navbar {
 
 /* Allauth templates (taken from boutique ado). Will be changed when I do more widespread styling
 ------------------------------------------------------------------------ */
+
+.allauth-form-inner-content {
+    border: #000 1px solid;
+}
 
 .allauth-form-inner-content p {
     margin-top: 1.5rem;

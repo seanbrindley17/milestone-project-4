@@ -5,9 +5,12 @@
     {% trans "Sign In" %}
 {% endblock head_title %}
 {% block inner_content %}
-    {% element h1 %}
-        {% trans "Sign In" %}
-    {% endelement %}
+<hr>
+<div class="">
+    <div class="">
+    <h2 class="text-center">
+        {% trans "Log In" %}
+    </h2>
     {% if not SOCIALACCOUNT_ONLY %}
         {% setvar link %}
             <a href="{{ signup_url }}">
@@ -58,4 +61,6 @@
     {% if PASSKEY_LOGIN_ENABLED %}
         {% include "mfa/webauthn/snippets/login_script.html" with button_id="passkey_login" %}
     {% endif %}
+    </div>
+   </div> 
 {% endblock %}
