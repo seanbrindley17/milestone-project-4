@@ -13,7 +13,7 @@
 
 {% block content %}
 <hr>
-<div class="container">
+<div class="container product-container my-2">
     <h2 class="mb-2 text-center">{{ product.name }}</h2>
     <hr class="w-100">
     <div class="row border border-black">
@@ -51,7 +51,7 @@
                 {% with product.has_sizes as sizes %}
                 {% if sizes %}
                 <div class="col-8 offset-2">
-                    <select id="product-size" name="product-size" class="form-select" aria-label="select-size">
+                    <select id="product-size" name="product_size" class="form-select" aria-label="select-size">
                         <option selected>Choose Size:</option>
                         <option value="extra-small">XS</option>
                         <option value="small">S</option>
@@ -65,7 +65,7 @@
                 {% with product.is_footwear as fins %}
                 {% if fins %}
                 <div class="col-8 offset-2">
-                    <select name="shoe-size" id="shoe-size" class="form-select" aria-label="select-shoe-size">
+                    <select name="shoe_size" id="shoe-size" class="form-select" aria-label="select-shoe-size">
                         <option selected>Choose Size:</option>
                         <option value="3-4">3-4</option>
                         <option value="4.5-5.5">4.5-5.5</option>
@@ -99,7 +99,7 @@
                         Back To Shop
                     </a>
                     <!-- Add To Trolley -->
-                    <input type="submit" class="btn custom-buttom text-success" name="" value="Add To Trolley">
+                    <input type="submit" class="btn custom-buttom text-success" value="Add To Trolley">
                 </div>
                 <!-- Hidden input to send user to Product detail page of product just added -->
                 <input type="hidden" name="return-url" value="{{ request.path }}">
