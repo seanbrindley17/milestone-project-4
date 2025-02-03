@@ -76,7 +76,7 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
-# INTERNAL_IPS = ["127.0.0.1"]
+INTERNAL_IPS = ["127.0.0.1"]
 
 ROOT_URLCONF = "wnsc_shop.urls"
 
@@ -224,26 +224,4 @@ DEFAULT_FROM_EMAIL = "wscshop@email.com"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# LOGGING = {
-#     "version": 1,
-#     "disable_existing_loggers": False,
-#     "handlers": {
-#         "console": {
-#             "class": "logging.StreamHandler",
-#         },
-#     },
-#     "root": {
-#         "handlers": ["console"],
-#         "level": "DEBUG",
-#     },
-#     "loggers": {
-#         "django": {
-#             "handlers": ["console"],
-#             "level": "DEBUG",
-#         },
-#         "storages.backends.s3boto3": {
-#             "handlers": ["console"],
-#             "level": "DEBUG",
-#         },
-#     },
-# }
+LOGGING = {}
