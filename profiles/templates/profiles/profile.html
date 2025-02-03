@@ -38,7 +38,7 @@
         <hr>
         <!-- User's order history -->
         <div class="row mt-3 mb-4">
-            <div class="col-6 offset-3">
+            <div class="col-8 offset-2">
                 <p class="text-center"><strong>Order History</strong></p>
                 <div class="order-history table-responsive">
                     <!-- Represented in table -->
@@ -63,13 +63,14 @@
                                     <td>{{ order.date }}</td>
                                     <td>
                                         <ul>
-                                            {% for item in order.orderitems.all %}
-                                                {% if item.product.has_sizes %}
-                                                    Size: {{ item.product.size }}
-                                                {% elif item.product.is_footwear %}
-                                                    Size: {{ item.product.shoesize }}    
-                                                {% endif %}
-                                                {{ item.product.name }} @ Qty:{{ item.quantity }}
+                                            {% for item in order.items.all %}
+                                                <strong>{{ item.product.name }}</strong><br>
+                                                {% if item.regular_size %}
+                                                    Size: {{ item.regular_size }}
+                                                {% elif item.fin_size %}
+                                                    Size: {{ item.fin_size }}    
+                                                {% endif %}<br>
+                                                 x Qty:{{ item.quantity }}
                                             {% endfor %}
                                         </ul>
                                     </td>
