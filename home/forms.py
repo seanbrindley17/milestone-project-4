@@ -9,7 +9,7 @@ class ProductForm(forms.ModelForm):
         model = Product
         # Makes the footwear option not selectable
         # Will implement in future but I ran out of time
-        excude = ("is_footwear",)
+        exclude = ("is_footwear",)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
