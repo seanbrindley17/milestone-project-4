@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+<hr class="my-2">
     <div class="row">
         <div class="col text-center">
             <h2>Product Management</h2>
@@ -20,13 +21,24 @@
     </div>
 
     <div class="row">
-        <div class="col">
+        <div class="col-6 offset-3 border border-black">
             <form action="{% url 'add_product' %}" method="POST" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <div>
+                {% for field in form %}
+                    <div class="my-3">
+                        <label for="{{ field.id_for_label }}" class="form-label me-3"><strong>{{ field.label }}: </strong></label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <p class="form-text">{{ field.help_text }}</p>
+                        {% endif %}
+                        {% for error in field.error %}
+                            <div class="text-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+                <div class="text-center">
                     <a href="{% url 'home' %}" class="btn btn-black custom-button">Cancel</a>
-                    <button class="btn btn-black custom-button" type="submit">Confirm and Add Product</button>
+                    <button class="btn text-info custom-button" type="submit">Confirm and Add Product</button>
                 </div>
             </form>
         </div>
