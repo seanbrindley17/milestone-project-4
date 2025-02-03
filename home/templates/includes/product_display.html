@@ -1,10 +1,12 @@
 <br>
+<div class="text-center">
 <h2>Products</h2>
+</div>
 <hr>
 <div class="row">
     {% if products %}
     {% for product in products %}
-    <div class="col-12 col-sm-6 col-xl-3">
+    <div class="col-12 col-sm-6 col-xl-3 mb-4">
         <div class="card">
             <h4 class="card-title">{{ product.name }}</h4>
             <div class="card-body">
@@ -17,14 +19,17 @@
                 {% endif %}
                 <br>
                 <p>£{{ product.price }}</p>
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <a href="{% url 'product_detail' product.id %}" class="btn custom-button btn-info">View Product Details</a>
                 </div>
+                <hr>
                 <!-- Gives admin ability to edit and delete product from the product detail page -->
                 {% if request.user.is_superuser %}
-                <a href="{% url 'edit_product' product.id %}" class="btn custom-button">Edit Product Details</a>
-                <a href="#deleteProductModal-{{ product.id }}" data-bs-toggle="modal" class="btn custom-button">Delete
+                <div class="text-center">
+                <a href="{% url 'edit_product' product.id %}" class="btn custom-button my-1">Edit Product Details</a>
+                <a href="#deleteProductModal-{{ product.id }}" data-bs-toggle="modal" class="btn custom-button my-1">Delete
                     Product</a>
+                </div>
                 {% endif %}
             </div>
             <!-- Delete Product modal -->
@@ -32,16 +37,16 @@
                 aria-labelledby="deleteModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header text-center">
                             <h3>Delete Product</h3>
                         </div>
                         <div class="modal-body">
                             <p>Are you sure you want to delete {{ product.name }} from the database?</p>
                             <hr>
-                            <div>
+                            <div class="text-center">
                                 <a href="{% url 'delete_product' product.id %}" class="btn custom-button">Yes, Delete
                                     product</a>
-                                <button type="button" class="" data-bs-dismiss="modal" class="btn">No, Go
+                                <button type="button" class="" data-bs-dismiss="modal" class="ms-auto">No, Go
                                     Back!</button>
                             </div>
                         </div>
