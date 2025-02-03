@@ -78,3 +78,9 @@ Return to [README](README.md)
 
 * MAJOR ISSUE: When attempting to set up my AWS bucket to handle static files, I could not for life of me get it to work. When pushing to github and therefore heroku, it was scraping the static files correctly but then saving them in a tmp folder. ![static files in tmp folder](/readme-documentation/screenshots/bugs-and-issues/deployment/heroku-tmp-static-files.png)
     * FIX: I reached out to student support and learned that the Django commands in the video that I had used, `STATICFILES_STORAGE` and `DEFAULT_FILE_STORAGE`, were actually depreciated in the current version of Django. When replaced with the correct django setting under the STORAGES setting in settings.py, my static files populated the bucket successfully.
+
+* I wasn't able to style the allauth forms to the extent I'd like. In particular the log in form, I don't want the "forgot your password" to be in a span next to the password input but as I can't access the form there's nothing I can do about that. 
+
+* When attempting to display item sizes in the user's trolley, I would get an error stating that I was trying to increment a string or something like that: ![+= string error](/readme-documentation/screenshots/bugs-and-issues/trolley/type-error-plus-equals.png)
+![+= type error callback](/readme-documentation/screenshots/bugs-and-issues/trolley/type-error-plus-equals-traceback.png)
+    * FIX: I had to turn to chatgpt to suggest a fix for my piece of code in trolley/views.py. I had to make sure I was only incrementing the trolley item generally if there was no dictionary in the particular trolley item, which would indicate a size. I don't think I'd have worked out the exact code on my own.
