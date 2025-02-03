@@ -84,24 +84,24 @@ def view_checkout(request):
                             quantity=item_data,
                         )
                         order_item.save()
-                    elif isinstance(item_data["items_by_size"]):
+                    # elif isinstance(item_data["items_by_shoesize"]):
+                    #     for shoesize, quantity in item_data[
+                    #         "items_by_shoesize"
+                    #     ].items():
+                    #         order_item = OrderItem(
+                    #             order=order,
+                    #             product=product,
+                    #             quantity=quantity,
+                    #             product_size=shoesize,
+                    #         )
+                    #         order_item.save()
+                    else:
                         for size, quantity in item_data["items_by_size"].items():
                             order_item = OrderItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
-                                product_size=size,
-                            )
-                            order_item.save()
-                    else:
-                        for shoesize, quantity in item_data[
-                            "items_by_shoesize"
-                        ].items():
-                            order_item = OrderItem(
-                                order=order,
-                                product=product,
-                                quantity=quantity,
-                                product_size=shoesize,
+                                regular_size=size,
                             )
                             order_item.save()
                 except Product.DoesNotExist:

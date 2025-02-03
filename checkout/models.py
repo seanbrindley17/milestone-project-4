@@ -77,7 +77,7 @@ class OrderItem(models.Model):
     product = models.ForeignKey(
         Product, null=False, blank=False, on_delete=models.CASCADE
     )
-    regular_size = models.CharField(max_length=2, null=True, blank=True)
+    regular_size = models.CharField(max_length=20, null=True, blank=True)
     fin_size = models.CharField(max_length=4, null=True, blank=True)
     quantity = models.IntegerField(null=True, blank=True, default=0)
     item_total_cost = models.DecimalField(

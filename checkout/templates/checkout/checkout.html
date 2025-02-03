@@ -12,6 +12,7 @@
 {% endblock %}
 
 {% block content %}
+<hr>
     <div class="row">
         <div class="col-2 offset-5 mb-4">
             <h1>Checkout</h1>
@@ -19,13 +20,13 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-lg-6 order-lg-last mb-5">
+        <div class="col-12 mb-5">
             <div class="row">
                 <div class="col-7 offset-2">
-                    <p class="mb-1 mt-0 small text-muted">Item</p>
+                    <p class="mb-1 mt-0 small text-muted"><strong>Item</strong></p>
                 </div>
                 <div class="col-3 text-right">
-                    <p class="mb-1 mt-0 small text-muted">Subtotal</p>
+                    <p class="mb-1 mt-0 small text-muted"><strong>Subtotal</strong></p>
                 </div>
             </div>
         </div>
@@ -47,20 +48,21 @@
                 </div>
                 <!-- information about the items in the summary -->
                 <div class="col-5">
-                    <p class="my-0">{{ item.product.name }}</p>
+                    <p class="my-2">{{ item.product.name }}</p>
                     <!-- Issue here with size not being displayed correctly -->
-                    <p class="my-0 small">Size: {% if item.has_sizes %}{{ item.size }}{% elif item.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
-                    <p class="my-0 small">Quantity: {{ item.quantity }}</p>
+                    <p class="my-1 small">Size: {% if item.product.has_sizes %}{{ item.size }}{% elif item.product.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
+                    <p class="my-1 small">Quantity: {{ item.quantity }}</p>
                 </div>
                 <!-- Summary subtotal -->
-                <div class="col-2 text-right">
-                    <p class="my-0 small text-muted">
+                <div class="col-2 text-center">
+                    <p class="my-1">
                         £{{ item.product.price }}
                     </p>
                 </div>
             </div>
+            <hr class="my-1">
         {% endfor %}
-        <hr>
+        
         <!-- Total order cost summary -->
         <div class="row text-right">
             <div class="col-7 offset-2">
@@ -74,8 +76,8 @@
                 <p class="my-0"><strong>£{{ total_cost | floatformat:2 }}</strong></p>
             </div>
         </div>
-        <hr>
-        <div class="col-12 col-lg-5 offset-lg-1">
+        <hr class="my-1">
+        <div class="col-6 offset-3 text-center">
             <p class="text-center">Complete purchase below</p>
             <!-- Checkout form for user to fill in to purchase items -->
             <form action="{% url 'view_checkout' %}" method="POST" id="payment-form">
@@ -85,19 +87,28 @@
                     <legend class="fieldset-label px-2 w-auto">Your Details</legend>
                     <br>
                     {{ order_form.name }}
+                    <br>
                     {{ order_form.surname }}
+                    <br>
                     {{ order_form.email }}
+                    <br>
                     {{ order_form.phone_number }}
+                    <br>
                 </fieldset>
                 <!-- Second fieldset contains user's delivery information -->
                 <fieldset class="px-3 mb-4">
                     <legend class="fieldset-label px-2 w-auto">Delivery Information</legend>
                     <br>
                     {{ order_form.address_line_one }}
+                    <br>
                     {{ order_form.address_line_two }}
+                    <br>
                     {{ order_form.town_or_city }}
+                    <br>
                     {{ order_form.county }}
+                    <br>
                     {{ order_form.postcode }}
+                    <br>
                     <div class="form-check form-check-inline float-right mr-0">
                         {% if user.is_authenticated %}
                             <label class="form-check-label" for="id-save-info">Save this delivery information</label>
@@ -111,7 +122,7 @@
                     </div>
                 </fieldset>
                 <!-- Third fieldset contains payment information, secured using stripe -->
-                <fieldset class="px-3 align-items-center">
+                <fieldset class="px-3 align-items-center my-5">
                     <legend class="fieldset-label px-2 w-auto">Payment Information</legend>
 
                     <!-- #card-payment div will be used for the Stripe payment -->
@@ -125,15 +136,13 @@
                     <input type="hidden" value="{{ client_secret }}" name="client_secret">
                 </fieldset>
                 <div>
-                    <a href="{% url 'show_trolley' %}" class="btn-outline-black">
-                        <span>
-                            Review Items In Trolley
-                        </span>
+                    <a href="{% url 'show_trolley' %}" class="btn custom-button mx-2">
+                        Review Items In Trolley
                     </a>
-                    <button type="submit" id="submit-button" class="btn-black">
+                    <button type="submit" id="submit-button" class="btn-black mx-2">
                         <span>Confirm and Pay!</span>
                     </button>
-                    <p class="text-danger my-0"><span>You will be charged £{{ total_cost | floatformat:2 }}</span></p>
+                    <p class="text-center text-danger my-3"><span>You will be charged £{{ total_cost | floatformat:2 }}</span></p>
                 </div>
             </form>
         </div>
