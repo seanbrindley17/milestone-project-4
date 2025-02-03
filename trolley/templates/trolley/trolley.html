@@ -47,6 +47,11 @@
                     </td>
                     <td class="py-3">
                         <p class=""><strong>{{ item.product.name }}</strong></p>
+                        {% if item.product.has_sizes %}
+                            <p>Size: {{ item.size }}</p>
+                        {% elif item.product.is_footwear %}
+                            <p>Size: {{ item.shoesize }}</p>
+                        {% endif %}
                     </td>
                     <!-- 2nd cell contains current quantity -->
                     <td class="py-3 w-25">
