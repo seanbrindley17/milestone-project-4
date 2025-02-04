@@ -49,7 +49,7 @@
                 <!-- information about the items in the summary -->
                 <div class="col-5">
                     <p class="my-2">{{ item.product.name }}</p>
-                    <!-- Issue here with size not being displayed correctly -->
+                    <!-- Display size, no items currently have a shoe size -->
                     <p class="my-1 small">Size: {% if item.product.has_sizes %}{{ item.size }}{% elif item.product.is_footwear %}{{ item.shoesize }}{% else %}No size{% endif %}</p>
                     <p class="my-1 small">Quantity: {{ item.quantity }}</p>
                 </div>
