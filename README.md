@@ -105,7 +105,12 @@ Explain any fonts and icon libraries used, like **Google Fonts**, **Font Awesome
 
 ⚠️ --- END --- ⚠️
 
+#### Font
+
 - [Oxanium](https://fonts.google.com/specimen/Oxanium) was used throughout the site purely because I like it.
+
+#### Icons
+
 - [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
 
 ## User Stories
@@ -297,36 +302,6 @@ erDiagram
 ```
 
 source: [Mermaid](https://mermaid.live/edit#pako:eNrNVVFvmzAQ_ivIz2mVNGsS8ra1bKrUrlOSatoUCTlwIdaMTc9225Tw32egdCQmXaW9DCEB93139t195nISyRjIlABeMpogTZfCs9fdPJh9m91-vroOvN3u5GSXe7ezy2DmTb0lyTiNQC1JTa3tbdLVIripiJEUmjKxT63Qir7z7BKXdxeLioywBgTRitygRU2--LgIvtzOflTsFXApEuVp2cnOvfndpz2HDVVearhmGYfGpcyy2Uo744YvxSv1a_B9fh0sFtYhry3lpTQykXiQUsZra1E_Xpd2yYKm4BhjpmxVt-Ef8CVQO42_xVpJyYEKL6LKUO7aNdpmWLcOD5lmoJlmD_urNzV9Zxbql3EzAxUhyzSTwl2XqTDiZhWukIoY4m7CkWzWEsPjGZWOh0m1cdveULFnK7Yu17WU-hEodoIJ2L3ikd3CvWFZCkJ3ohmgkoJyptruMUQspdzLkEVuUS2UQGiQOwjCg40H4QGjaJ9Lt3MS7e5DYdIV4DvbarDT3pJ9y5pt7LE5Fj-TSpd_HAfQ8lGEtqMR01sHpHGMoFTImY1cHso3CfpROoRIGtEOHFNtpZFC9eJ2IgZuVYNbqyGlXbguYTempab8ANPwpK0TS5jtvRWt5BzcLMtHBmHGYreP1U8z71BAYjjFSskOuGbiAGBCQwLo3Rsq9F6hm90zDWl4mELhzoT835TzpkaOyOo_UE6rEB0VMApw7_9dvpAeSQFtRrEdspXPkugNWBYpp0wMa2qHUjllCkulRsv5VkRkqtFAj6A0yab5MFkp1pcx3RgzKn5K-foJMdMSb-qZXo32ikKmOXki08HEPx2Mh5P-0B-NJ_3B-XmPbMn0ZDTunw7PPozO7T0aDPxh0SPPVdSz0-HobDz2h-PJxO_7_qD4Dbafiv0)
-
-⚠️ RECOMMENDED ⚠️
-
-Alternatively, or in addition to, a more comprehensive ERD can be auto-generated once you're at the end of your development stages, just before you submit. Follow the steps below to obtain a thorough ERD that you can include. Feel free to leave the steps below in the README for future use to yourself.
-
-⚠️ --- END --- ⚠️
-
-I have used `pygraphviz` and `django-extensions` to auto-generate an ERD.
-
-The steps taken were as follows:
-- In the terminal: `sudo apt update`
-- then: `sudo apt-get install python3-dev graphviz libgraphviz-dev pkg-config`
-- then type `Y` to proceed
-- then: `pip3 install django-extensions pygraphviz`
-- in my `settings.py` file, I added the following to my `INSTALLED_APPS`:
-```python
-INSTALLED_APPS = [
-    ...
-    'django_extensions',
-    ...
-]
-```
-- back in the terminal: `python3 manage.py graph_models -a -o erd.png`
-- drag the new `erd.png` file into my `documentation/` folder
-- removed `'django_extensions',` from my `INSTALLED_APPS`
-- finally, in the terminal: `pip3 uninstall django-extensions pygraphviz -y`
-
-![screenshot](documentation/advanced-erd.png)
-
-source: [medium.com](https://medium.com/@yathomasi1/1-using-django-extensions-to-visualize-the-database-diagram-in-django-application-c5fa7e710e16)
 
 ## Testing
 
