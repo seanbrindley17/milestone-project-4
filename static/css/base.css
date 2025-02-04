@@ -49,9 +49,9 @@ header .navbar {
 ------------------------------------------------------------------------ */
 
 .image-container {
-    background: url("../images/background-images/pool-image-cropped.jpg") no-repeat center center;
+    background: url("../images/background-images/pexels-heart-rules-1656004-711187.jpg") no-repeat center center;
     background-size: cover;
-    height: 300px;
+    height: 500px;
     max-width: 90%;
 }
 
