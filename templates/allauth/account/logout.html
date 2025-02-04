@@ -4,7 +4,8 @@
     {% trans "Sign Out" %}
 {% endblock head_title %}
 {% block inner_content %}
-    {% element h1 %}
+<hr class="my-3">
+    {% element h2 %}
         {% trans "Sign Out" %}
     {% endelement %}
     {% element p %}
@@ -17,9 +18,9 @@
             {{ redirect_field }}
         {% endslot %}
         {% slot actions %}
-            {% element button type="submit" %}
-                {% trans 'Sign Out' %}
-            {% endelement %}
+            <button type="submit" class="btn custom-button mb-2">
+                Sign Out
+            </button>
         {% endslot %}
     {% endelement %}
 {% endblock inner_content %}
