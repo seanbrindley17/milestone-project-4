@@ -31,7 +31,7 @@
                 <form action="{% url 'profile' %}" method="POST" class="mt-4 text-center" id="profile-update-form">
                     {% csrf_token %}
                     {{ form }}
-                    <button class="btn btn-black">Update Info</button>
+                    <button class="btn btn-black" type="submit">Update Info</button>
                 </form>
             </div>
         </div>
@@ -41,6 +41,7 @@
             <div class="col-8 offset-2">
                 <p class="text-center"><strong>Order History</strong></p>
                 <div class="order-history table-responsive">
+                    {% if orders %}
                     <!-- Represented in table -->
                     <table class="table table-sm text-center">
                         <thead>
@@ -79,6 +80,9 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    {% else %}
+                        <p class="text-center">No previous orders found.</p>
+                    {% endif %}
                 </div>
             </div>
         </div>
