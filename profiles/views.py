@@ -35,6 +35,9 @@ def profile(request):
 # View to retrieve past orders and display to user
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
+    if not order:
+        messages.error(request, "Order cannot be found.")
+        return redirect("profile")
 
     messages.info(request, (f"This is a previous order, Order number: {order_number}"))
 

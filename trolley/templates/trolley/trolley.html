@@ -16,7 +16,7 @@
     <h2 class="text-center">Trolley</h2>
     <hr>
     <div class="row">
-        <div class="col-10 offset-2">
+        <div class="col-10 offset-1">
             {% if items_in_trolley %}
             <!-- <div class="container"> -->
             <div class="table-responsive">
@@ -72,18 +72,21 @@
                 
             </table>
             </div>
-            <!-- </div> -->
             {% else %}
-            <p class="text-center">No Items In Trolley</p>
-            <a href="{% url 'home' %}" class="btn-lg">Back</a>
+            <div class="text-center">
+            <p class="">No Items In Trolley</p>
+            <a href="{% url 'home' %}" class="btn-lg btn border border-black">Back</a>
+            </div>
             {% endif %}
-            <em>Delivery charge is 10%</em>
+            <div class="my-2">
+                <em>Delivery charge is 10%</em>
+            </div>
             <p><strong>Total: £{{ total_cost | floatformat:2 }}</strong></p>
         </div>
     </div>
-
-    <a href="{% url 'view_checkout' %}">Checkout</a>
-
+    <div class="text-center">
+        <a href="{% url 'view_checkout' %}" class="btn custom-button">Checkout</a>
+    </div>
     {% for item in items_in_trolley %}
     <div class="modal fade" id="removeItemModal-{{ item.product.id }}" tabindex="-1" aria-labelledby="removeModalLabel"
         aria-hidden="true">
