@@ -4,6 +4,8 @@ from decimal import Decimal
 from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
 from django.views.decorators.http import require_POST
 from django.contrib import messages
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from django.conf import settings
 from home.models import Product
 from trolley.contexts import trolley_items
@@ -219,6 +221,7 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+    send_confirmation_email(order)
     messages.success(
         request,
         f"Order placed! \
@@ -236,3 +239,25 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def send_confirmation_email(order):
+    customer_email = order.email
+    # render_to_string on the .txt files with the order passed allows context to be used in email
+    email_subject = render_to_string(
+        "checkout/confirmation_emails/confirmation_email_subject.txt",
+        {"order": order},
+    )
+    email_body = render_to_string(
+        "checkout/confirmation_emails/confirmation_email_body.txt",
+        {
+            "order": order,
+            "contact_email": settings.DEFAULT_FROM_EMAIL,
+        },
+    )
+    send_mail(
+        email_subject,
+        email_body,
+        settings.DEFAULT_FROM_EMAIL,
+        [customer_email],
+    )

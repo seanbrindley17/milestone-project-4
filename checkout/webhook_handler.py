@@ -23,18 +23,21 @@ class stripe_webhook_handler:
         customer_email = order.email
         # render_to_string on the .txt files with the order passed allows context to be used in email
         email_subject = render_to_string(
-            "checkout/templates/checkout/confirmation_emails/confirmation_email_subject.txt",
+            "checkout/confirmation_emails/confirmation_email_subject.txt",
             {"order": order},
         )
         email_body = render_to_string(
-            "checkout/templates/checkout/confirmation_emails/confirmation_email_body.txt",
+            "checkout/confirmation_emails/confirmation_email_body.txt",
             {
                 "order": order,
                 "contact_email": settings.DEFAULT_FROM_EMAIL,
             },
         )
         send_mail(
-            email_subject, email_body, settings.DEFAULT_FROM_EMAIL, [customer_email]
+            email_subject,
+            email_body,
+            settings.DEFAULT_FROM_EMAIL,
+            [customer_email],
         )
 
     # handle event returns a http response when event of unhandled webhook is received

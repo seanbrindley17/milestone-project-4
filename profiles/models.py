@@ -21,7 +21,7 @@ class UserProfile(models.Model):
     county = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self):
-        return self.user.name
+        return self.user.username
 
 
 # Signal for post_save event so that profile is either created or updated when user object is created
@@ -29,4 +29,6 @@ class UserProfile(models.Model):
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-    instance.userprofile.save()
+    instance.userprofile.save(
+        update_fields=["name", "surname", "phone_number", "email"]
+    )
