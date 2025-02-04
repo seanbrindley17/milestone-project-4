@@ -84,6 +84,8 @@ def view_checkout(request):
                             quantity=item_data,
                         )
                         order_item.save()
+                    # # Non working code for shoe sizes
+                    # # Keeping because I will fix after this has been marked
                     # elif isinstance(item_data["items_by_shoesize"]):
                     #     for shoesize, quantity in item_data[
                     #         "items_by_shoesize"

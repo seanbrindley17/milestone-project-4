@@ -1,6 +1,6 @@
 from django.urls import path
-from .webhooks import webhook
 from . import views
+from .webhooks import webhook
 
 
 urlpatterns = [
