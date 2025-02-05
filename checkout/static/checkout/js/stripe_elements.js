@@ -1,3 +1,4 @@
+/* jshint esversion: 11, jquery: true */
 const stripePublicKey = $("#id_stripe_public_key").text().slice(1, -1);
 const clientSecret = $("#id_client_secret").text().slice(1, -1);
 const stripe = Stripe(stripePublicKey);

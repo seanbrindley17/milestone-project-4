@@ -64,59 +64,23 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 ### CSS
 
-⚠️ INSTRUCTIONS ⚠️
-
-1. [*recommended*] If you are using the live deployed site, use this link: https://jigsaw.w3.org/css-validator/#validate_by_uri
-2. If you are copying/pasting your CSS code, use this link: https://jigsaw.w3.org/css-validator/#validate_by_input
-
-It's recommended to validate the live site for your primary CSS file on the deployed URL. This will give you a custom URL as well, which you can use below on your testing documentation. It makes it easier to return back to a page for validating it again in the future. The URL will look something like this:
-
-- https://jigsaw.w3.org/css-validator/validator?uri=https://milestone-project-4-sb-1448d349aa27.herokuapp.com
-
-If you have additional/multiple CSS files, then individual "[validation by input](https://jigsaw.w3.org/css-validator/#validate_by_input)" is recommended for the extra CSS files.
-
-**IMPORTANT**: Third-Party tools
-
-If you're using external libraries/frameworks (e.g: Bootstrap, Materialize, Font Awesome, etc.), then sometimes the tool will attempt to also validate these, even though it's not part of your own actual code that you wrote. You are not required to validate the external libraries or frameworks!
-
 ⚠️ --- END --- ⚠️
 
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| checkout | [checkout.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/static/checkout/css/checkout.css) | Link (if applicable) | ![screenshot](documentation/validation/css-checkout-checkout.png) | Notes (if applicable) |
-| profiles | [profiles.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/static/profiles/css/profiles.css) | Link (if applicable) | ![screenshot](documentation/validation/css-profiles-profiles.png) | Notes (if applicable) |
-| static | [base.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/static/css/base.css) | Link (if applicable) | ![screenshot](documentation/validation/css-static-base.png) | Notes (if applicable) |
+| profiles | [profiles.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/static/profiles/css/profiles.css) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/css/profiles.css-success.png) | No errors |
+| static | [base.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/static/css/base.css) | [Link](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#warnings) | ![screenshot](/readme-documentation/screenshots/validation/css/base.css-success.png) | No errors |
 
 
 ### JavaScript
-
-⚠️ INSTRUCTIONS ⚠️
-
-If using modern JavaScript (ES6) methods, then make sure to include the following line at the very top of every single JavaScript file in your project (this should remain in your files for submission as well):
-
-`/* jshint esversion: 11 */`
-
-If you are also including jQuery (`$`), then the updated format will be:
-
-`/* jshint esversion: 11, jquery: true */`
-
-This allows the JShint validator to recognize modern ES6 methods, such as: `let`, `const`, `template literals`, `arrow functions (=>)`, etc.
-
-**IMPORTANT**: External resources
-
-Sometimes we'll write JavaScript that imports variables from other files, such as "an array of questions" from `questions.js`, which are used within the main `script.js` file elsewhere. If that's the case, the JShint validation tool doesn't know how to recognize "unused variables" that would normally be imported locally when running your own project. These warnings are acceptable, so showcase on your screenshot(s).
-
-The same thing applies when using external libraries such as Stripe, Leaflet, Bootstrap, Materialize, etc. To instantiate these components, we need to use their respective declarator. Again, the JShint validation tool would flag these as "undefined/unused variables". These warnings are acceptable, so showcase on your screenshot(s).
-
-⚠️ --- END --- ⚠️
 
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| checkout | [stripe_elements.js](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/static/checkout/js/stripe_elements.js) | N/A | ![screenshot](documentation/validation/js-checkout-stripe_elements.png) | Notes (if applicable) |
+| checkout | [stripe_elements.js](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/static/checkout/js/stripe_elements.js) | N/A | ![screenshot](/readme-documentation/screenshots/validation/js/checkout-stripe-js-success.png) | No errors |
 
 
 ### Python
