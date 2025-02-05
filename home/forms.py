@@ -14,9 +14,8 @@ class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         categories = Category.objects.all()
-        display_names = [
-            (category.id, category.get_display_name()) for category in categories
-        ]
+        display_names = [(category.id, category.get_display_name())
+                         for category in categories]
 
         self.fields["category"].choices = display_names
 

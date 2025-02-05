@@ -53,9 +53,7 @@ def add_product(request):
             messages.success(request, "Added Product Successfully")
             return redirect(reverse("add_product"))
         else:
-            messages.error(
-                request, "Failed to add product. Check form is filled out correctly."
-            )
+            messages.error(request, "Failed to add product. Check form is filled out correctly.")  # noqa
     form = ProductForm
 
     template = "home/add_product.html"
@@ -77,14 +75,16 @@ def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == "POST":
-        # On a edit form post request, pre fill using instance of product got above using product id
+        # On a edit form post request
+        # pre fill using instance of product got above using product id
         form = ProductForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             form.save()
             messages.success(request, "Edit successful")
             return redirect(reverse("product_detail", args=[product_id]))
         else:
-            messages.error(request, "Error editing product, double check fields")
+            messages.error(
+                request, "Error editing product, double check fields")
 
     form = ProductForm(instance=product)
     messages.info(request, f"Editing {product.name}")
@@ -117,7 +117,8 @@ def newsletter(request):
         form = NewsletterSignupForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, "Thank you for subscribing to the newsletter")
+            messages.success(
+                request, "Thank you for subscribing to the newsletter")
             return redirect("home")
         else:
             messages.error(request, "Something went wrong, please try again.")
