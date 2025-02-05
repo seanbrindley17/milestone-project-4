@@ -19,15 +19,18 @@
     <div class="row border border-black">
         <!-- Image container -->
         <div class="col-l-4 col-sm-6">
+            <!-- The data-reverse has to take into account that the reverse image might not be uploaded the same as the front image, hence the long if statement -->
             <div class="product-image-container container my-5">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom"
+                    data-reverse="{% if product.reverse_image %}{{ product.reverse_image.url }}{% elif product.reverse_image_url %}{{ product.reverse_image_url }}{% else %}{{ product.image.url }}{% endif %}">
                 {% elif product.image_url %}
-                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom"
+                    data-reverse="{% if product.reverse_image %}{{ product.reverse_image.url }}{% elif product.reverse_image_url %}{{ product.reverse_image_url }}{% else %}{{ product.image_url }}{% endif %}">
                 {% else %}
                 <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
                 {% endif %}
-            </div>
+                </div>
         </div>
         <!-- Additional information -->
         <div class="col-l-4 col col-sm-6 align-center">
@@ -137,4 +140,23 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+<!-- Custom javascript to show the reverse image on click -->
+{% block extra_js %}
+{{ block.super }}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.product-image-container img').click(function () {
+                let mainImage = $(this);
+                let frontSrc = mainImage.attr('src');
+                let reverseSrc = mainImage.data('reverse');
+
+                if (reverseSrc) {
+                    mainImage.attr('src', reverseSrc);
+                    mainImage.data('reverse', frontSrc);
+                }
+            });
+        });
+    </script>
 {% endblock %}
