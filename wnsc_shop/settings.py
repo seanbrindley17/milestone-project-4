@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     "home",
     "trolley",
     "checkout",
-    "contact",
     "profiles",
     # Other
     "storages",
