@@ -4,30 +4,11 @@
 [![GitHub last commit](https://img.shields.io/github/last-commit/seanbrindley17/milestone-project-4)](https://www.github.com/seanbrindley17/milestone-project-4/commits/main)
 [![GitHub repo size](https://img.shields.io/github/repo-size/seanbrindley17/milestone-project-4)](https://www.github.com/seanbrindley17/milestone-project-4)
 
-⚠️ INSTRUCTIONS ⚠️
+For my final Code Institute project, I was tasked with create a full stack website in Django. The parameters were that it had to use Django to create multiple 'apps', had to involve CRUD functionality, Stripe functionality and email functionality. The example project of Boutique Ado was a large influence in all aspects due to being my only reference point for a larger Django app like this.
 
-In this section, include a few paragraphs providing an overview of your project. Essentially, this part is your "sales pitch". Describe what the project hopes to accomplish, who it is intended to target, and how it will be useful to the target audience.
+I decided to do a theoretical redesign of my old swimming club's shop, fitting the theme of my last project with swimming and also because I own a good amount of kit so instead of getting photos from the internet I just took my own. My Modus Operandi for these past two projects has been minimal styling and more a focus on the backend stuff because ultimately that's where my interest lies, I don't have much of a design brain. I would have liked to do a bit more customisation when compared to the Boutique Ado example but as there was just so much new stuff to try and cram in I didn't feel like it was too feasible to attempt to deviate too much. I did however use Django 5 in my project, which caused some issues trying to follow along but these were eventually solved.
 
-⚠️ --- END --- ⚠️
-
-🛑 NOTES 🛑
-
-Do not add a **Table of Contents** to your Markdown files. GitHub has these built-in automatically using the headers/hashtags.
-
-Don't add screenshots for the README/TESTING into your `assets` or `static` folders. Create a new folder at the root-level called `documentation`. Consider creating sub-directories within `documentation` to handle things like `wireframes`, `features`, `validation`, `responsiveness`, etc.
-
-**Site Mockups**
-*([amiresponsive](https://ui.dev/amiresponsive?url=https://milestone-project-4-sb-1448d349aa27.herokuapp.com), [techsini](https://techsini.com/multi-mockup), etc.)*
-Having issues generating site mockups? This is likely due to security policies with your deployed site.
-If you open up your DevTools, there may be an error referencing `X-Frame-Options`.
-
-For Chrome users, head over to http://bit.ly/3iRPn4u and install the extension within your browser. Once installed, navigate back to the mockup site of your choice. You should find your site rendering in the various devices now.
-
-Alternatively, open your project in Gitpod and run the server. Once the site is running, click the `Ports` tab from your Gitpod Terminal. Click the padlock on the appropriate port for your project (`Flask: 5000`, `Django: 8000`). This will make your local page public temporarily. Now, copy the URL of your live-preview page into the responsive tool above. You should find your site rendering in the various devices.
-
-🛑 --- END ---- 🛑
-
-![screenshot](documentation/mockup.png)
+![screenshot](/readme-documentation/screenshots/mockup/mockup.png)
 
 source: [milestone-project-4 amiresponsive](https://ui.dev/amiresponsive?url=https://milestone-project-4-sb-1448d349aa27.herokuapp.com)
 
@@ -162,25 +143,22 @@ In this section, you should go over the different parts of your project, and des
 
 | Feature | Notes | Screenshot |
 | --- | --- | --- |
-| Register | Authentication is handled by allauth, allowing users to register accounts. | ![screenshot](documentation/features/register.png) |
-| Login | Authentication is handled by allauth, allowing users to log in to their existing accounts. | ![screenshot](documentation/features/login.png) |
-| Logout | Authentication is handled by allauth, allowing users to log out of their accounts. | ![screenshot](documentation/features/logout.png) |
-| Product List | Users can browse all available products with sorting, filtering by categories, and search functionality. | ![screenshot](documentation/features/product-list.png) |
-| Product Details | Displays detailed information about a selected product, including its name, description, price, an image, and available sizes. | ![screenshot](documentation/features/product-details.png) |
-| Add to Bag | Users can add items to their shopping bag, with support for selecting different sizes if applicable. | ![screenshot](documentation/features/add-to-bag.png) |
-| View Bag | Users can view the contents of their shopping bag, adjust quantities, or remove items. | ![screenshot](documentation/features/view-bag.png) |
-| Checkout | Users can proceed to checkout, where they provide their delivery details and payment information using Stripe integration. | ![screenshot](documentation/features/checkout.png) |
-| Order Confirmation | Users receive an on-screen and email confirmation with details of their purchase. | ![screenshot](documentation/features/order-confirmation.png) |
-| Profile Management | Users can manage their profile information, including their default delivery address and order history. | ![screenshot](documentation/features/profile-management.png) |
-| Order History | Users can view their past orders and access details of each order, including products purchased and the delivery status. | ![screenshot](documentation/features/order-history.png) |
+| Register | Authentication is handled by allauth, allowing users to register accounts. | ![screenshot](/readme-documentation/screenshots/features/signup.png) |
+| Login | Authentication is handled by allauth, allowing users to log in to their existing accounts. | ![screenshot](/readme-documentation/screenshots/features/login.png) |
+| Logout | Authentication is handled by allauth, allowing users to log out of their accounts. | ![screenshot](/readme-documentation/screenshots/features/logout.png) |
+| Product List | Users can browse all available products with sorting, filtering by categories, and search functionality. | ![screenshot](/readme-documentation/screenshots/features/products.png) |
+| Product Details | Displays detailed information about a selected product, including its name, description, price, an image, and available sizes. | ![screenshot](/readme-documentation/screenshots/features/profile-details.png) |
+| Add to Trolley | Users can add items to their trolley, with support for selecting different sizes if applicable. | ![screenshot](/readme-documentation/screenshots/features/add-to-bag.png) |
+| View Trolley | Users can view the contents of their shopping trolley, adjust quantities, or remove items. | ![screenshot](/readme-documentation/screenshots/features/trolley.png) |
+| Checkout Item Details | Users can proceed to checkout, where they can see summary of their trolley items | ![screenshot](/readme-documentation/screenshots/features/checkout.png) |
+| Checkout Details | Users can proceed to checkout, where they provide their delivery details and payment information using Stripe integration. | ![screenshot](/readme-documentation/screenshots/features/checkout-details.png) |
+| Order Confirmation | Users receive an on-screen and email confirmation with details of their purchase. | ![screenshot](/readme-documentation/screenshots/features/order-confirmation.png) |
+| Profile Management | Users can manage their profile information, including their default delivery address and order history. | ![screenshot](/readme-documentation/screenshots/features/profile-details.png) |
+| Order History | Users can view their past orders and access details of each order, including products purchased and the delivery status. | ![screenshot](/readme-documentation/screenshots/features/profile-history.png) |
 | Product Management | Superusers can add, edit, and delete products from the site via a CRUD interface. | ![screenshot](documentation/features/product-management.png) |
-| Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](documentation/features/newsletter.png) |
-| Contact | Users can submit a message via the contact form, which stores their name, email, and message in the database. | ![screenshot](documentation/features/contact.png) |
-| FAQs | Admins can manage frequently asked questions, which are displayed on the site for users. | ![screenshot](documentation/features/faqs.png) |
-| User Feedback | Clear and concise Django messages are used to provide feedback to users when interacting with various features (e.g., adding products to the bag, checking out, etc.). | ![screenshot](documentation/features/user-feedback.png) |
-| Heroku Deployment | The site is deployed to Heroku, making it accessible online for users. | ![screenshot](documentation/features/heroku.png) |
-| SEO | SEO optimization with a sitemap.xml, robots.txt, and appropriate meta tags to improve search engine visibility. | ![screenshot](documentation/features/seo.png) |
-| Marketing | Social media presence is available in the footer using external links, as well as a Facebook Marketplace wireframe in the README for future integrations. | ![screenshot](documentation/features/marketing.png) |
+| Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](/readme-documentation/screenshots/features/newsletter.png) |
+| User Feedback | Clear and concise Django messages are used to provide feedback to users when interacting with various features (e.g., adding products to the bag, checking out, etc.). | ![screenshot](/readme-documentation/screenshots/features/add-notification.png) |
+| Heroku Deployment | The site is deployed to Heroku, making it accessible online for users. | ![screenshot](/readme-documentation/screenshots/features/heroku.png) |
 | 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/features/404.png) |
 
 ### Future Features
