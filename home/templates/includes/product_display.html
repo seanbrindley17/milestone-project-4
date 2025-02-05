@@ -8,14 +8,14 @@
     {% for product in products %}
     <div class="col-12 col-sm-6 col-xl-3 mb-4">
         <div class="card">
-            <h4 class="card-title">{{ product.name }}</h4>
+            <h4 class="card-title text-center">{{ product.name }}</h4>
             <div class="card-body">
                 {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom mx-auto d-block">
                 {% elif product.image_url %}
-                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}" class="card-img-top card-img-bottom mx-auto d-block">
                 {% else %}
-                <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom">
+                <img src="/media/default-image.jpg" alt="{{ product.name }}" class="card-img-top card-img-bottom mx-auto d-block">
                 {% endif %}
                 <br>
                 <p>£{{ product.price }}</p>
