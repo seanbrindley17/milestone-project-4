@@ -102,42 +102,24 @@ I used my Acer laptop for desktop testing, a simulated galaxy s8 on dev tools fo
 
 ## Browser Compatibility
 
-⚠️ INSTRUCTIONS ⚠️
+I've tested my deployed project on Chrome, Firefox and Opera to check for compatibility issues.
+I found nothing that impacted compatibility between the browsers.
 
-Use this space to discuss testing the live/deployed site on various browsers. Consider testing at least 3 different browsers, if available on your system. You DO NOT need to use all of the browsers below, just pick any 3 (minimum).
-
-Recommended browsers to consider:
-- [Chrome](https://www.google.com/chrome)
-- [Firefox (Developer Edition)](https://www.mozilla.org/firefox/developer)
-- [Edge](https://www.microsoft.com/edge)
-- [Safari](https://support.apple.com/downloads/safari)
-- [Brave](https://brave.com/download)
-- [Opera](https://www.opera.com/download)
-
-**IMPORTANT**: You must provide screenshots of the browsers you've tested, to "prove" that you've actually tested them.
-
-Please note, there are services out there that can test multiple browser compatibilities at the same time. Some of these are paid services, but some are free. If you use these, you must provide a link to the source used for attribution, and multiple screenshots of the results.
-
-⚠️ --- END --- ⚠️
-
-I've tested my deployed project on multiple browsers to check for compatibility issues.
-
-| Page | Chrome | Firefox | Safari | Notes |
+| Page | Chrome | Firefox | Opera | Notes |
 | --- | --- | --- | --- | --- |
-| Register | ![screenshot](documentation/browsers/chrome-register.png) | ![screenshot](documentation/browsers/firefox-register.png) | ![screenshot](documentation/browsers/safari-register.png) | Works as expected |
-| Login | ![screenshot](documentation/browsers/chrome-login.png) | ![screenshot](documentation/browsers/firefox-login.png) | ![screenshot](documentation/browsers/safari-login.png) | Works as expected |
-| Profile | ![screenshot](documentation/browsers/chrome-profile.png) | ![screenshot](documentation/browsers/firefox-profile.png) | ![screenshot](documentation/browsers/safari-profile.png) | Works as expected |
-| Home | ![screenshot](documentation/browsers/chrome-home.png) | ![screenshot](documentation/browsers/firefox-home.png) | ![screenshot](documentation/browsers/safari-home.png) | Works as expected |
-| Products | ![screenshot](documentation/browsers/chrome-products.png) | ![screenshot](documentation/browsers/firefox-products.png) | ![screenshot](documentation/browsers/safari-products.png) | Works as expected |
-| Product Details | ![screenshot](documentation/browsers/chrome-product-details.png) | ![screenshot](documentation/browsers/firefox-product-details.png) | ![screenshot](documentation/browsers/safari-product-details.png) | Works as expected |
-| Bag | ![screenshot](documentation/browsers/chrome-bag.png) | ![screenshot](documentation/browsers/firefox-bag.png) | ![screenshot](documentation/browsers/safari-bag.png) | Works as expected |
-| Checkout | ![screenshot](documentation/browsers/chrome-checkout.png) | ![screenshot](documentation/browsers/firefox-checkout.png) | ![screenshot](documentation/browsers/safari-checkout.png) | Works as expected |
-| Checkout Success | ![screenshot](documentation/browsers/chrome-checkout-success.png) | ![screenshot](documentation/browsers/firefox-checkout-success.png) | ![screenshot](documentation/browsers/safari-checkout-success.png) | Works as expected |
-| Add Product | ![screenshot](documentation/browsers/chrome-add-product.png) | ![screenshot](documentation/browsers/firefox-add-product.png) | ![screenshot](documentation/browsers/safari-add-product.png) | Works as expected |
-| Edit Product | ![screenshot](documentation/browsers/chrome-edit-product.png) | ![screenshot](documentation/browsers/firefox-edit-product.png) | ![screenshot](documentation/browsers/safari-edit-product.png) | Works as expected |
-| Newsletter | ![screenshot](documentation/browsers/chrome-newsletter.png) | ![screenshot](documentation/browsers/firefox-newsletter.png) | ![screenshot](documentation/browsers/safari-newsletter.png) | Works as expected |
-| Contact | ![screenshot](documentation/browsers/chrome-contact.png) | ![screenshot](documentation/browsers/firefox-contact.png) | ![screenshot](documentation/browsers/safari-contact.png) | Works as expected |
-| 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | ![screenshot](documentation/browsers/safari-404.png) | Works as expected |
+| Register | ![screenshot](/readme-documentation/screenshots/features/signup.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/register.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/register.png) | Works as expected |
+| Login | ![screenshot](/readme-documentation/screenshots/features/login.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/login.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/login.png) | Works as expected |
+| Profile | ![screenshot](/readme-documentation/screenshots/features/profile-details.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/profile.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/profile.png) | Works as expected |
+| Home | ![screenshot](/readme-documentation/screenshots/responsiveness/desktop/home.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/home.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/home.png) | Works as expected |
+| Products | ![screenshot](/readme-documentation/screenshots/features/products.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/products.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/products.png) | Works as expected |
+| Product Details | ![screenshot](/readme-documentation/screenshots/features/product-detail.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/product-detail.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/product-detail.png) | Works as expected |
+| Trolley | ![screenshot](/readme-documentation/screenshots/features/trolley.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/trolley.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/trolley.png) | Works as expected |
+| Checkout | ![screenshot](/readme-documentation/screenshots/features/checkout-details.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/checkout.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/checkout.png) | Works as expected |
+| Checkout Success | ![screenshot](/readme-documentation/screenshots/features/order-confirmation.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/checkout-success.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/checkout-success.png) | Works as expected |
+| Add Product | ![screenshot](/readme-documentation/screenshots/responsiveness/desktop/add-product.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/add-product.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/add-product.png) | Works as expected |
+| Edit Product | ![screenshot](/readme-documentation/screenshots/responsiveness/desktop/edit-product.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/edit-product.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/edit-product.png) | Works as expected |
+| Newsletter | ![screenshot](/readme-documentation/screenshots/features/newsletter.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/newsletter.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/newsletter.png) | Works as expected |
+| 404 | ![screenshot](/readme-documentation/screenshots/features/404.png) | ![screenshot](/readme-documentation/screenshots/compatibility/firefox/404.png) | ![screenshot](/readme-documentation/screenshots/compatibility/opera/404.png) | Works as expected |
 
 ## Lighthouse Audit
 
@@ -305,3 +287,5 @@ Most of your project's **Features** should already align with the **User Stories
 * DEVELOPMENT BUG: In the developer server for Django, updating the Css files and then clearing cache doesn't actually update the css for me since I migrated to the PostgreSQL database. Instead I have to run manually `python manage.py collectstatic --noinput` if I wanted to update anything done in a css file in the development server. While this isn't the end of the world and has a workaround, it did probably influence the limited custom css that I used. I tended to use bootstrap classes to do most of the styling.
 
 * DISPLAY BUG: It appears as though there is a very small amount of horizontal scrolling on the site, possibly caused by the header or footer as it's on all pages that those are on. But I hadn't adjusted them in a while and haven't yet found out the cause. It's not site breaking.
+
+* NOTIFICATION BUG: When buying an item with a size for the 2nd time, I got a double notification pop up with the size incrementing code not completely working. I'm not sure what went wrong there but I was out of time to debug this. The site still works. ![screenshot of double notification](/readme-documentation/screenshots/bugs-and-issues/trolley/trolley-notification-duplication-bug.png)
