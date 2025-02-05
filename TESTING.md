@@ -85,4 +85,10 @@ Return to [README](README.md)
 ![+= type error callback](/readme-documentation/screenshots/bugs-and-issues/trolley/type-error-plus-equals-traceback.png)
     * FIX: I had to turn to chatgpt to suggest a fix for my piece of code in trolley/views.py. I had to make sure I was only incrementing the trolley item generally if there was no dictionary in the particular trolley item, which would indicate a size. I don't think I'd have worked out the exact code on my own.
 
+* EMAIL ISSUE: When writing the view for the email, I used a long form link of something like `checkout/template/checkout/confirmation_emails/confirmation_email_subject`. This meant it didn't work. The fix was to change it to `checkout/confirmation_emails/confirmation_email_subject`. I asked chatgpt about how to link to the confirmation emails and it corrected my structure.
+
+### Current Bugs/Issues
+
 * DEVELOPMENT BUG: In the developer server for Django, updating the Css files and then clearing cache doesn't actually update the css for me since I migrated to the PostgreSQL database. Instead I have to run manually `python manage.py collectstatic --noinput` if I wanted to update anything done in a css file in the development server. While this isn't the end of the world and has a workaround, it did probably influence the limited custom css that I used. I tended to use bootstrap classes to do most of the styling.
+
+* DISPLAY BUG: It appears as though there is a very small amount of horizontal scrolling on the site, possibly caused by the header or footer as it's on all pages that those are on. But I hadn't adjusted them in a while and haven't yet found out the cause. It's not site breaking.
