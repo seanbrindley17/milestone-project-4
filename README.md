@@ -80,12 +80,6 @@ The text was left mostly default black, except on links and buttons, where I use
 
 ### Typography
 
-⚠️ INSTRUCTIONS ⚠️
-
-Explain any fonts and icon libraries used, like **Google Fonts**, **Font Awesome**, etc. Consider adding a link to each font used, the Font Awesome site (if used), or similar icon library.
-
-⚠️ --- END --- ⚠️
-
 #### Font
 
 - [Oxanium](https://fonts.google.com/specimen/Oxanium) was used throughout the site purely because I like it.
@@ -151,7 +145,7 @@ To design the wireframes I used [balsamiq](https://balsamiq.com/wireframes)
 | Newsletter | Users can register their email address to receive newsletters from the site. Currently, this only stores the email in the database. | ![screenshot](/readme-documentation/screenshots/features/newsletter.png) |
 | User Feedback | Clear and concise Django messages are used to provide feedback to users when interacting with various features (e.g., adding products to the bag, checking out, etc.). | ![screenshot](/readme-documentation/screenshots/features/add-notification.png) |
 | Heroku Deployment | The site is deployed to Heroku, making it accessible online for users. | ![screenshot](/readme-documentation/screenshots/features/heroku.png) |
-| 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page with one that ties into the site's look and feel. | ![screenshot](documentation/features/404.png) |
+| 404 | The 404 error page will indicate when a user has navigated to a page that doesn't exist, replacing the default Heroku 404 page. | ![screenshot](/readme-documentation/screenshots/features/404.png) |
 
 ### Future Features
 
@@ -628,7 +622,7 @@ There are no remaining major differences between the local version when compared
 
 ### Media
 
-The images of the product I used for my store are all owned by me, they're my own kit from the swimming club. This makes it easier as I only have to credit myself.
+The images of the products I used for my store are all owned by me, they're my own kit from the swimming club and I simply took pictures of them. This makes it easier as I only have to credit myself.
 
 | Source | Notes |
 | --- | --- |
