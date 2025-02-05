@@ -131,14 +131,6 @@ To design the wireframes I used [balsamiq](https://balsamiq.com/wireframes)
 
 ## Features
 
-⚠️ INSTRUCTIONS ⚠️
-
-In this section, you should go over the different parts of your project, and describe each feature. You should explain what value each of the features provides for the user, focusing on your target audience, what they want to achieve, and how your project can help them achieve these things.
-
-**IMPORTANT**: Remember to always include a screenshot of each individual feature!
-
-⚠️ --- END --- ⚠️
-
 ### Existing Features
 
 | Feature | Notes | Screenshot |
@@ -163,6 +155,8 @@ In this section, you should go over the different parts of your project, and des
 
 ### Future Features
 
+- **More Products**: Initially I had fins as a product, which would use a different sizing format to the regular. Unfortunately I ran out of time while trying to impliment it without breaking my code so I decided to forgo them and add them myself as a little project after the fact.
+- **Better Sorting/Classification**: When adding more products I'd like ways to sort them better. i.e. if the shop were to sell things explicitly for females then I'd like a sort option for women's products for example.
 - **Product Inventory Alerts**: Notify customers when out-of-stock items are back in stock, or when low inventory is approaching.
 - **Multi-Currency and Multi-Language Support**: Expand the application to support multiple currencies and languages to reach a global audience.
 
@@ -615,12 +609,6 @@ By forking the GitHub Repository, you make a copy of the original repository on 
 
 ### Local VS Deployment
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss any differences between the local version you've developed, and the live deployment site. Generally, there shouldn't be [m]any major differences, so if you honestly cannot find any differences, feel free to use the following example:
-
-⚠️ --- END --- ⚠️
-
 There are no remaining major differences between the local version when compared to the deployed version online.
 
 ## Credits
@@ -639,31 +627,6 @@ There are no remaining major differences between the local version when compared
 | [ChatGPT](https://chatgpt.com) | Help with code logic and explanations, particularly for integration of AWS and migration to PostGre |
 
 ### Media
-
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to provide attribution links to any media files borrowed from elsewhere (images, videos, audio, etc.). If you're the owner (or a close acquaintance) of some/all media files, then make sure to specify this information. Let the assessors know that you have explicit rights to use the media files within your project. Ideally, you should provide an actual link to every media file used, not just a generic link to the main site, unless it's AI-generated artwork.
-
-Looking for some media files? Here are some popular sites to use. The list of examples below is by no means exhaustive. Within the Code Institute Slack community, you can find more "free media" links by sending yourself (or Slackbot) the following command: `!freemedia`.
-
-- Images
-    - [Pexels](https://www.pexels.com)
-    - [Unsplash](https://unsplash.com)
-    - [Pixabay](https://pixabay.com)
-    - [Lorem Picsum](https://picsum.photos) (placeholder images)
-    - [Wallhere](https://wallhere.com) (wallpaper / backgrounds)
-    - [This Person Does Not Exist](https://thispersondoesnotexist.com) (reload to get a new person)
-- Audio
-    - [Audio Micro](https://www.audiomicro.com/free-sound-effects)
-- Video
-    - [Videvo](https://www.videvo.net)
-- Image Compression
-    - [TinyPNG](https://tinypng.com) (for images <5MB)
-    - [CompressPNG](https://compresspng.com) (for images >5MB)
-
-A few examples have been provided below to give you some ideas on how to do your own Media credits.
-
-⚠️ --- END ---⚠️
 
 The images of the product I used for my store are all owned by me, they're my own kit from the swimming club. This makes it easier as I only have to credit myself.
 
