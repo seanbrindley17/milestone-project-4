@@ -21,7 +21,8 @@ class stripe_webhook_handler:
     # Handles the sending of confirmation emails
     def _send_confirmation_email(self, order):
         customer_email = order.email
-        # render_to_string on the .txt files with the order passed allows context to be used in email
+        # render_to_string on the .txt files with the order passed allows
+        # context to be used in email
         email_subject = render_to_string(
             "checkout/confirmation_emails/confirmation_email_subject.txt",
             {"order": order},
@@ -40,7 +41,8 @@ class stripe_webhook_handler:
             [customer_email],
         )
 
-    # handle event returns a http response when event of unhandled webhook is received
+    # handle event returns a http response when event of unhandled webhook is
+    # received
     def handle_event(self, event):
 
         return HttpResponse(
@@ -115,7 +117,8 @@ class stripe_webhook_handler:
         if order_exists:
             self._send_confirmation_email(order)
             return HttpResponse(
-                content=f"Webhook received: {event["type"]} | Order already in database. ",
+                content=f"Webhook received: {
+                    event["type"]} | Order already in database. ",
                 status=200,
             )
         # Otherwise, this is where the order is created by the webhook
@@ -137,7 +140,8 @@ class stripe_webhook_handler:
                 )
                 # Same code as from the view except loading from json intent
                 for item_id, item_data in json.loads(trolley).items():
-                    # Get the item id to determine whether it has sizes, shoesizes or not
+                    # Get the item id to determine whether it has sizes,
+                    # shoesizes or not
                     product = Product.objects.get(id=item_id)
                     # if item_data is an integer, it doesn't have a size
                     if isinstance(item_data, int):
@@ -148,7 +152,8 @@ class stripe_webhook_handler:
                         )
                         order_item.save()
                     elif isinstance(item_data["items_by_size"]):
-                        for size, quantity in item_data["items_by_size"].items():
+                        for size, quantity in item_data["items_by_size"].items(
+                        ):
                             order_item = OrderItem(
                                 order=order,
                                 product=product,
@@ -176,11 +181,14 @@ class stripe_webhook_handler:
                 )
         self._send_confirmation_email(order)
         return HttpResponse(
-            content=f"Webhook received: {event["type"]} | Created order in webhook",
+            content=f"Webhook received: {
+                event["type"]} | Created order in webhook",
             status=200,
         )
 
     # handles payment_intent.payment_failed webhook
     def handle_payment_intent_payment_failed(self, event):
 
-        return HttpResponse(content=f"Webhook received: {event['type']}", status=200)
+        return HttpResponse(
+            content=f"Webhook received: {event['type']}", status=200
+        )

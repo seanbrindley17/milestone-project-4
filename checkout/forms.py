@@ -5,7 +5,7 @@ from .models import Order
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        # Fields here only those which will not be automatically filled/calculated
+        # Fields here only those which will not be automatically filled
         fields = (
             "name",
             "surname",

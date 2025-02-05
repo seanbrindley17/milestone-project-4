@@ -38,10 +38,11 @@ def webhook(request):
     handler = stripe_webhook_handler(request)
 
     # event map will map webhook events to relevant handler functions
-    # Uses dictionary with key of the stripe webhooks and value of the methods of the handler
+    # Uses dictionary with key of the stripe webhooks
+    # and value of the methods of the handler
     event_map = {
         "payment_intent.succeeded": handler.handle_payment_intent_succeeded,
-        "payment_intent.payment_failed": handler.handle_payment_intent_payment_failed,
+        "payment_intent.payment_failed": handler.handle_payment_intent_payment_failed,  # noqa
     }
 
     # Get the webhook type from Stripe i.e. payment_attempt.succeeded

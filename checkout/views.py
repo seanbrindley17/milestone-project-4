@@ -1,6 +1,6 @@
 import json
 import stripe
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse  # noqa
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.core.mail import send_mail
@@ -20,7 +20,8 @@ from .forms import OrderForm
 @require_POST
 def cache_checkout_data(request):
     try:
-        # Gets payment intent id by splitting client secret and taking the first element in that new array
+        # Gets payment intent id by splitting client secret
+        # and taking the first element in that new array
         pid = request.POST.get("client_secret").split("_secret")[0]
         # set up stripe with secret key to be able to modify payment intent
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -35,7 +36,8 @@ def cache_checkout_data(request):
         )
         return HttpResponse(status=200)
     except Exception as e:
-        messages.error(request, "Payment cannot be proccessed. Try again later")
+        messages.error(
+            request, "Payment cannot be proccessed. Try again later")
         # return 400 for a bad request
         return HttpResponse(content=e, status=400)
 
@@ -62,7 +64,8 @@ def view_checkout(request):
             "county": request.POST["county"],
             "postcode": request.POST["postcode"],
         }
-        # Passes form_data above to the OrderForm in forms.py and save as order_form
+        # Passes form_data above to the OrderForm in forms.py
+        # and save as order_form
         order_form = OrderForm(form_data)
         # Will save the order form if it's valid
         if order_form.is_valid():
@@ -75,7 +78,8 @@ def view_checkout(request):
             # Loop through items in trolley
             for item_id, item_data in trolley.items():
                 try:
-                    # Get the item id to determine whether it has sizes, shoesizes or not
+                    # Get the item id to determine whether it has sizes,
+                    # shoesizes or not
                     product = Product.objects.get(id=item_id)
                     # if item_data is an integer, it doesn't have a size
                     if isinstance(item_data, int):
@@ -99,7 +103,8 @@ def view_checkout(request):
                     #         )
                     #         order_item.save()
                     else:
-                        for size, quantity in item_data["items_by_size"].items():
+                        for size, quantity in item_data["items_by_size"].items(
+                        ):
                             order_item = OrderItem(
                                 order=order,
                                 product=product,
@@ -109,14 +114,19 @@ def view_checkout(request):
                             order_item.save()
                 except Product.DoesNotExist:
                     messages.error(
-                        request,
-                        ("A product in the trolley was not found in the the database"),
+                        request, (
+                            "A product in the trolley was not found in the the database"  # noqa
+                            ),
                     )
                     order.delete()
                     return redirect(reverse("show_trolley"))
 
             request.session["save_info"] = "save-info" in request.POST
-            return redirect(reverse("checkout_success", args=[order.order_number]))
+            return redirect(
+                reverse(
+                    "checkout_success",
+                    args=[
+                        order.order_number]))
         else:
             messages.error(
                 request,
@@ -129,7 +139,8 @@ def view_checkout(request):
     if not trolley:
         # Display error message
         messages.error(request, "No items in trolley")
-        # Return user to home page to prevent access by inputting the checkout url
+        # Return user to home page to prevent access by inputting the checkout
+        # url
         return redirect(reverse("home"))
 
     # trolley items and costs
@@ -200,7 +211,8 @@ def checkout_success(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
     if request.user.is_authenticated:
-        # Gets user's profile and sets the order to it and saves. Allows retrieval
+        # Gets user's profile and sets the order to it and saves. Allows
+        # retrieval
         profile = UserProfile.objects.get(user=request.user)
         order.user_profile = profile
         order.save()
@@ -228,7 +240,8 @@ def checkout_success(request, order_number):
         email will be sent to {order.email}.",
     )
 
-    # Deletes user's trolley from session as if successful order they won't need it
+    # Deletes user's trolley from session as if successful order they won't
+    # need it
     if "trolley" in request.session:
         del request.session["trolley"]
 
@@ -242,7 +255,8 @@ def checkout_success(request, order_number):
 
 def send_confirmation_email(order):
     customer_email = order.email
-    # render_to_string on the .txt files with the order passed allows context to be used in email
+    # render_to_string on the .txt files with the order passed allows context
+    # to be used in email
     email_subject = render_to_string(
         "checkout/confirmation_emails/confirmation_email_subject.txt",
         {"order": order},

@@ -56,5 +56,6 @@ class OrderAdmin(admin.ModelAdmin):
     ordering = ("-date",)
 
 
-# OrderItemAdminInline doesn't need to be registered as it is accessible via OrderAdmin
+# OrderItemAdminInline doesn't need to be registered,
+# it is accessible via OrderAdmin
 admin.site.register(Order, OrderAdmin)

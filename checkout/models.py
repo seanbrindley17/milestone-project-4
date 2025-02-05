@@ -37,7 +37,9 @@ class Order(models.Model):
         max_digits=6, decimal_places=2, null=False, default=0
     )
     original_trolley = models.TextField(null=False, blank=False, default="")
-    stripe_pid = models.CharField(max_length=254, null=False, blank=False, default="")
+    stripe_pid = models.CharField(
+        max_length=254, null=False, blank=False, default=""
+    )  # noqa
 
     # Will generate a random 32 character string to be used as an order number
     def _generate_order_number(self):
@@ -55,9 +57,12 @@ class Order(models.Model):
     def update_total_cost(self):
 
         self.order_cost = (
-            self.items.aggregate(Sum("item_total_cost"))["item_total_cost__sum"] or 0
+            self.items.aggregate(Sum("item_total_cost"))["item_total_cost__sum"]  # noqa
+            or 0  # noqa
         )
-        self.delivery_cost = self.order_cost * settings.DELIVERY_PERCENTAGE / 100
+        self.delivery_cost = (
+            self.order_cost * settings.DELIVERY_PERCENTAGE / 100
+        )  # noqa
         self.total_cost = self.order_cost + self.delivery_cost
         self.save()
 
