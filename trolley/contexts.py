@@ -15,14 +15,16 @@ def trolley_items(request):
     total_cost = 0
     trolley = request.session.get("trolley", {})
 
-    # Iterates through the products in the trolley dictionary using the .items() method. This was confusing me intially
+    # Iterates through the products in the trolley dictionary using .items()
+    # This was confusing me intially
     for item_id, item_data in trolley.items():
         # If item_data is just an integer then there's no sizings involved
         if isinstance(item_data, int):
             product = get_object_or_404(Product, pk=item_id)
             # increments the product_count by the quantity added to the bag
             product_count += item_data
-            # Calculates the total cost of the added item, multiply the quantity by the price. Simple stuff really
+            # Calculates the total cost of the added item,
+            # multiply the quantity by the price
             order_cost += item_data * product.price
             if order_cost > 0:
                 delivery_charge = order_cost * Decimal(
