@@ -24,7 +24,8 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-# Signal for post_save event so that profile is either created or updated when user object is created
+# Signal for post_save event so that profile is either created
+# or updated when user object is created
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:

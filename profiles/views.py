@@ -15,7 +15,8 @@ def profile(request):
 
     # if statement for handling form post requests
     if request.method == "POST":
-        # Create new instance of form using the posted data, updating profile got above
+        # Create new instance of form using the posted data,
+        # updating profile got above
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
@@ -39,7 +40,8 @@ def order_history(request, order_number):
         messages.error(request, "Order cannot be found.")
         return redirect("profile")
 
-    messages.info(request, (f"This is a previous order, Order number: {order_number}"))
+    messages.info(request, (
+        f"This is a previous order, Order number: {order_number}"))
 
     template = "checkout/checkout_success.html"
     context = {"order": order, "from_profile": True}
