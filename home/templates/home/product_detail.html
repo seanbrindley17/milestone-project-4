@@ -54,8 +54,8 @@
                 {% with product.has_sizes as sizes %}
                 {% if sizes %}
                 <div class="col-8 offset-2">
-                    <select id="product-size" name="product_size" class="form-select" aria-label="select-size">
-                        <option selected>Choose Size:</option>
+                    <select id="product-size" name="product_size" class="form-select" aria-label="select-size" required>
+                        <option value="" disabled selected>Choose Size:</option>
                         <option value="extra-small">XS</option>
                         <option value="small">S</option>
                         <option value="medium">M</option>
