@@ -122,19 +122,19 @@
 </div>
 
 <!-- Delete product modal -->
-<div class="modal fade" id="deleteProductModal-{{ product.id }}" tabindex="-1" aria-labelledby="deleteModalLabel"
+<div class="modal fade" id="deleteProductModal-{{ product.id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ product.id }}"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Delete Product</h3>
+                <h3 id="deleteModalLabel-{{ product.id }}">Delete Product</h3>
             </div>
             <div class="modal-body">
                 <p>Are you sure you want to delete {{ product.name }} from the database?</p>
                 <hr>
                 <div>
                     <a href="{% url 'delete_product' product.id %}" class="btn custom-button">Yes, Delete product</a>
-                    <button type="button" class="ms-auto" data-bs-dismiss="modal" class="btn">No, Go Back!</button>
+                    <button type="button" class="ms-auto btn custom-button" data-bs-dismiss="modal">No, Go Back!</button>
                 </div>
             </div>
         </div>
@@ -145,7 +145,7 @@
 <!-- Custom javascript to show the reverse image on click -->
 {% block extra_js %}
 {{ block.super }}
-    <script type="text/javascript">
+    <script>
         $(document).ready(function () {
             $('.product-image-container img').click(function () {
                 let mainImage = $(this);

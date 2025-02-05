@@ -38,7 +38,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h3 id="deleteModelLabal-{{ product.id }}">Delete Product</h3>
+                            <h3 id="deleteModelLabel-{{ product.id }}">Delete Product</h3>
                         </div>
                         <div class="modal-body">
                             <p>Are you sure you want to delete {{ product.name }} from the database?</p>
@@ -46,7 +46,7 @@
                             <div class="text-center">
                                 <a href="{% url 'delete_product' product.id %}" class="btn custom-button">Yes, Delete
                                     product</a>
-                                <button type="button" class="" data-bs-dismiss="modal" class="ms-auto">No, Go
+                                <button type="button" data-bs-dismiss="modal" class="ms-auto">No, Go
                                     Back!</button>
                             </div>
                         </div>
