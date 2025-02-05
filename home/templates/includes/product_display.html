@@ -34,11 +34,11 @@
             </div>
             <!-- Delete Product modal -->
             <div class="modal fade" id="deleteProductModal-{{ product.id }}" tabindex="-1"
-                aria-labelledby="deleteModalLabel" aria-hidden="true">
+                aria-labelledby="deleteModalLabel-{{ product.id }}" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header text-center">
-                            <h3>Delete Product</h3>
+                            <h3 id="deleteModelLabal-{{ product.id }}">Delete Product</h3>
                         </div>
                         <div class="modal-body">
                             <p>Are you sure you want to delete {{ product.name }} from the database?</p>

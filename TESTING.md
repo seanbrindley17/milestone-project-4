@@ -3,12 +3,6 @@
 > [!NOTE]
 > Return back to the [README.md](README.md) file.
 
-⚠️ INSTRUCTIONS ⚠️
-
-In the following sections, you need to convince the assessors that you have conducted enough manual testing to legitimately believe that the site works well. Essentially, in this part, you should go over all of your project's features, and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
-
-⚠️ --- END --- ⚠️
-
 ## Code Validation
 
 ⚠️ INSTRUCTIONS ⚠️
@@ -60,6 +54,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | checkout | [checkout_success.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/templates/checkout/checkout_success.html) | Link (if applicable) | ![screenshot](documentation/validation/html-checkout-checkout_success.png) | Notes (if applicable) |
 | home | [add_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/add_product.html) | Link (if applicable) | ![screenshot](documentation/validation/html-home-add_product.png) | Notes (if applicable) |
 | home | [edit_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/edit_product.html) | Link (if applicable) | ![screenshot](documentation/validation/html-home-edit_product.png) | Notes (if applicable) |
+| home | [product_display.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/index.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/index-errors.png) | Two errors, repeated. The duplicate class error was because on the confirm delete button in the model, there were two class attributes, one blank. This was removed. The other was an aria label error because I hadn't referenced what was being labelled. This was corrected by putting the id in the title and using the jinja templating to generate the correct ID  |
 | home | [index.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/index.html) | Link (if applicable) | ![screenshot](documentation/validation/html-home-index.png) | Notes (if applicable) |
 | home | [product_detail.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_detail.html) | Link (if applicable) | ![screenshot](documentation/validation/html-home-product_detail.png) | Notes (if applicable) |
 | profiles | [profile.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/templates/profiles/profile.html) | Link (if applicable) | ![screenshot](documentation/validation/html-profiles-profile.png) | Notes (if applicable) |
