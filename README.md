@@ -8,6 +8,8 @@ For my final Code Institute project, I was tasked with create a full stack websi
 
 I decided to do a theoretical redesign of my old swimming club's shop, fitting the theme of my last project with swimming and also because I own a good amount of kit so instead of getting photos from the internet I just took my own. My Modus Operandi for these past two projects has been minimal styling and more a focus on the backend stuff because ultimately that's where my interest lies, I don't have much of a design brain. I would have liked to do a bit more customisation when compared to the Boutique Ado example but as there was just so much new stuff to try and cram in I didn't feel like it was too feasible to attempt to deviate too much. I did however use Django 5 in my project, which caused some issues trying to follow along but these were eventually solved.
 
+Unfortunately I didn't get to include quite as much as I would have liked. As mentioned above, I decided to challenge myself by using Django 5 while the walkthrough used Django 4 which meant I lost quite a bit of time trying to figure out things that had been used in the walkthrough yet depreciated in the newest version of Django. I do feel however that it's a good thing to try and learn the latest version of it. 
+
 ![screenshot](/readme-documentation/screenshots/mockup/mockup.png)
 
 source: [milestone-project-4 amiresponsive](https://ui.dev/amiresponsive?url=https://milestone-project-4-sb-1448d349aa27.herokuapp.com)
@@ -86,7 +88,7 @@ The text was left mostly default black, except on links and buttons, where I use
 
 #### Icons
 
-- [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
+- [Font Awesome](https://fontawesome.com) icons were used in parts of the site on the homepage, as well as the Github icon in the footer.
 
 ## User Stories
 
@@ -149,6 +151,7 @@ To design the wireframes I used [balsamiq](https://balsamiq.com/wireframes)
 
 ### Future Features
 
+- **Better Admin Functionality**: I don't have a way for the admins to see all orders from the front end. 
 - **More Products**: Initially I had fins as a product, which would use a different sizing format to the regular. Unfortunately I ran out of time while trying to impliment it without breaking my code so I decided to forgo them and add them myself as a little project after the fact.
 - **Better Sorting/Classification**: When adding more products I'd like ways to sort them better. i.e. if the shop were to sell things explicitly for females then I'd like a sort option for women's products for example.
 - **Product Inventory Alerts**: Notify customers when out-of-stock items are back in stock, or when low inventory is approaching.
