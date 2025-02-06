@@ -1,6 +1,5 @@
 # Testing
 
-> [!NOTE]
 > Return back to the [README.md](README.md) file.
 
 ## Code Validation
@@ -15,14 +14,14 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | checkout | [checkout.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/templates/checkout/checkout.html) | [link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2Fcheckout%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/checkout-page-success.png) | No errors |
 | checkout | [checkout_success.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/templates/checkout/checkout_success.html) | [Link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2Fcheckout%2Fcheckout%2FC70AF50B9DEA45EE99B0A5EFB30B7448%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/checkout-success-error.png) | Error not specifically on page, but on the toast-success page where there were a couple of stray `</div>` end tags. These have been removed |
 | checkout | [checkout_success.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/checkout/templates/checkout/checkout_success.html) | [Link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2Fcheckout%2Fcheckout%2F15959F200CD14BFDB66FFB50D5B1EECD%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/checkout-success-success.png) | No errors |
-| home | [add_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/add_product.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/add-product-success.png) | No errors |
-| home | [edit_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/edit_product.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/edit-product-success.png) | No errors |
-| home | [product_display.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_display.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/index-errors.png) | Two errors, repeated. The duplicate class error was because on the confirm delete button in the model, there were two class attributes, one blank. This was removed. The other was an aria label error because I hadn't referenced what was being labelled. This was corrected by putting the id in the title and using the jinja templating to generate the correct ID  |
+| home | [add_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/add_product.html) |  | ![screenshot](/readme-documentation/screenshots/validation/html/add-product-success.png) | No errors |
+| home | [edit_product.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/edit_product.html) |  | ![screenshot](/readme-documentation/screenshots/validation/html/edit-product-success.png) | No errors |
+| home | [product_display.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_display.html) |  | ![screenshot](/readme-documentation/screenshots/validation/html/index-errors.png) | Two errors, repeated. The duplicate class error was because on the confirm delete button in the model, there were two class attributes, one blank. This was removed. The other was an aria label error because I hadn't referenced what was being labelled. This was corrected by putting the id in the title and using the jinja templating to generate the correct ID  |
 | home | [index.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/index.html) | [Link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/index-success.png) | No errors |
-| home | [product_detail.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_detail.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/product_detail-errors.png) | Repeat class attribute, removed extra one. aria-label error, no link to the delete element, fixed by correctly linking. Warning for using type=text/javascript. Didn't know this wasn't necessary as my walkthrough used it. |
+| home | [product_detail.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_detail.html) |  | ![screenshot](/readme-documentation/screenshots/validation/html/product_detail-errors.png) | Repeat class attribute, removed extra one. aria-label error, no link to the delete element, fixed by correctly linking. Warning for using type=text/javascript. Didn't know this wasn't necessary as my walkthrough used it. |
 | home | [product_detail.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/home/templates/home/product_detail.html) | [Link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2F6%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/product_detail-success.png) | No errors. |
 | profiles | [profile.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/templates/profiles/profile.html) | [Link](https://validator.w3.org/nu/?showsource=yes&doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2Fprofile%2F) | ![screenshot of errors](/readme-documentation/screenshots/validation/html/profile-errors.png) | Unsure about this. The errors say there are missing closing tags but looking at the source code I see the open tags here and then corresponding close tags here: ![screenshot of open tags](/readme-documentation/screenshots/validation/html/profile-open-tags.png), ![screenshot of close tags](/readme-documentation/screenshots/validation/html/profile-close-tags.png). I am completely unsure what to do about this. |
-| templates | [404.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/templates/404.html) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/html/404-success.png) | No errors |
+| templates | [404.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/templates/404.html) |  | ![screenshot](/readme-documentation/screenshots/validation/html/404-success.png) | No errors |
 | trolley | [trolley.html](https://github.com/seanbrindley17/milestone-project-4/blob/main/trolley/templates/trolley/trolley.html) | [Link](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2Ftrolley%2F) | ![screenshot](/readme-documentation/screenshots/validation/html/trolley-success.png) | No errors |
 
 
@@ -32,7 +31,7 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| profiles | [profiles.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/static/profiles/css/profiles.css) | Link (if applicable) | ![screenshot](/readme-documentation/screenshots/validation/css/profiles.css-success.png) | No errors |
+| profiles | [profiles.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/profiles/static/profiles/css/profiles.css) |  | ![screenshot](/readme-documentation/screenshots/validation/css/profiles.css-success.png) | No errors |
 | static | [base.css](https://github.com/seanbrindley17/milestone-project-4/blob/main/static/css/base.css) | [Link](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmilestone-project-4-sb-1448d349aa27.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en#warnings) | ![screenshot](/readme-documentation/screenshots/validation/css/base.css-success.png) | No errors |
 
 
@@ -140,6 +139,19 @@ All the images on the site were compressed in TinyPNG, I used minimal moving par
 | Add Product | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/add-product.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/add-product.png) |
 | Edit Product | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/edit-product.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/edit-product.png) |
 | 404 | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/404.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/404.png) |
+
+## WAVE Testing
+
+I used the [WAVE](https://wave.webaim.org/) browser extension in Chrome to give my site a once over. The errors that I have remaining are considered acceptable errors and were by design. No contrast issues detected.
+
+| Page | Screenshot | Notes |
+| --- | --- | --- |
+| Home | ![screenshot](/readme-documentation/screenshots/wave/home.png) | Link errors in the footer for the github icon and the link that appears on the smaller breakpoints. Acceptable. |
+| Product Detail | ![screenshot](/readme-documentation/screenshots/wave/product-details.png) | Link errors in the footer for the github icon and the link that appears on the smaller breakpoints. Acceptable. |
+| Trolley | ![screenshot](/readme-documentation/screenshots/wave/trolley.png) | Acceptable errors, label not needed as there's a heading above it, table header left blank is intentional and the aria label error is because it's on a model. |
+| Checkout | ![screenshot](/readme-documentation/screenshots/wave/checkout.png) | Used placeholders instead of labels and the fieldsets have labels. |
+| Checkout Success | ![screenshot](/readme-documentation/screenshots/wave/checkout-success.png) | Link errors in the footer for the github icon and the link that appears on the smaller breakpoints. Acceptable. |
+| Add/Edit Product | ![screenshot](/readme-documentation/screenshots/wave/add-product.png) | Link errors in the footer for the github icon and the link that appears on the smaller breakpoints. Acceptable. |
 
 ## Defensive Programming
 
