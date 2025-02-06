@@ -238,4 +238,6 @@ Defensive programming was manually tested with the below user acceptance testing
 
 * DISPLAY BUG: It appears as though there is a very small amount of horizontal scrolling on the site, possibly caused by the header or footer as it's on all pages that those are on. But I hadn't adjusted them in a while and haven't yet found out the cause. It's not site breaking.
 
+* CHECKOUT INFO DOESN'T AUTOFILL: Unfortunately the checkout inputs don't autofill with the user's saved info, which is a bit annoying as I tried for ages to solve it. In addition the user's info does save but all apart from their email field, for whatever reason.
+
 * NOTIFICATION BUG: When buying an item with a size for the 2nd time, I got a double notification pop up with the size incrementing code not completely working. I'm not sure what went wrong there but I was out of time to debug this. The site still works. ![screenshot of double notification](/readme-documentation/screenshots/bugs-and-issues/trolley/trolley-notification-duplication-bug.png)
