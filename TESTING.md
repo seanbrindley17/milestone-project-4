@@ -127,8 +127,6 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 All the images on the site were compressed in TinyPNG, I used minimal moving parts and the lighthouse audit was run on a chrome incognito window, so I don't know what more can be done to improve scores.
 
-* Note: The desktop checkout page throws a performance error, despite every other page working fine including the mobile version of the same page so I'm going to chalk that down as a bug in the lighthouse software.
-
 | Page | Mobile | Desktop |
 | --- | --- | --- |
 | Register | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/register.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/register.png) |
