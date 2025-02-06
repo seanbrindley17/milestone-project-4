@@ -33,7 +33,7 @@
 
                 <!-- Title and Logo -->
                 <a class="navbar-brand nav-link text-center" href="{% url 'home' %}"><h1>Ware<br>Swimming Club</h1></a>
-                <img src="{% static 'images/favicon/android-chrome-192x192.png' %}" alt="Logo" style="width: 125px;height: 125px;">
+                <img src="{% static 'images/favicon/android-chrome-192x192.png' %}" alt="WSC club logo" style="width: 125px;height: 125px;">
 
                 <!-- User Options on screens larger than 550px -->
                 <ul class="list-group mb-0 d-none d-sm-block">
@@ -117,7 +117,7 @@
                     <form method="POST" action="{% url 'newsletter' %}">
                         {% csrf_token %}
                         <label for="email">Enter Your Email: </label>
-                        <input type="email" name="email" placeholder="" required>
+                        <input type="email" name="email" id="email" required>
                         <button type="submit">Subscribe</button>
                     </form>
                 </div>
