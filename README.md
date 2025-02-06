@@ -629,6 +629,7 @@ The images of the products I used for my store are all owned by me, they're my o
 | [favicon.io](https://favicon.io) | Generating the favicon |
 | [Font Awesome](https://fontawesome.com) | Icons used throughout the site |
 | [Pexels](https://www.pexels.com/photo/underwater-photography-of-swimmer-711187/) | Hero image |
+| [WSC Logo](https://www.waresc.co.uk/) | Club logo. The head coach knows I'm doing this product so I got permission to use it |
 
 ### Acknowledgements (Throughout the course)
 
