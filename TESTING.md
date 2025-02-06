@@ -133,7 +133,7 @@ Unless your project is a single-page application (SPA), you should test Lighthou
 
 ⚠️ --- END --- ⚠️
 
-I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, my laptop is very old so performance may be skewed, and mobile results tend to be lower than desktop.
 
 | Page | Mobile | Desktop |
 | --- | --- | --- |
