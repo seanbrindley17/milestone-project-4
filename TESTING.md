@@ -123,34 +123,25 @@ I found nothing that impacted compatibility between the browsers.
 
 ## Lighthouse Audit
 
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss testing the live/deployed site's Lighthouse Audit reports. Avoid testing the local version (Gitpod/VSCode/etc.), as this can have knock-on effects for performance. If you don't have "Lighthouse" in your Developer Tools, it can be added as an [extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk).
-
-Unless your project is a single-page application (SPA), you should test Lighthouse Audit results for all of your pages, for both *mobile* and *desktop*.
-
-**IMPORTANT**: You must provide screenshots of the results, to "prove" that you've actually tested them.
-
-⚠️ --- END --- ⚠️
-
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, my laptop is very old so performance may be skewed, and mobile results tend to be lower than desktop.
+
+All the images on the site were compressed in TinyPNG, I used minimal moving parts and the lighthouse audit was run on a chrome incognito window, so I don't know what more can be done to improve scores.
+
+* Note: The desktop checkout page throws a performance error, despite every other page working fine including the mobile version of the same page so I'm going to chalk that down as a bug in the lighthouse software.
 
 | Page | Mobile | Desktop |
 | --- | --- | --- |
-| Register | ![screenshot](documentation/lighthouse/mobile-register.png) | ![screenshot](documentation/lighthouse/desktop-register.png) |
-| Login | ![screenshot](documentation/lighthouse/mobile-login.png) | ![screenshot](documentation/lighthouse/desktop-login.png) |
-| Profile | ![screenshot](documentation/lighthouse/mobile-profile.png) | ![screenshot](documentation/lighthouse/desktop-profile.png) |
-| Home | ![screenshot](documentation/lighthouse/mobile-home.png) | ![screenshot](documentation/lighthouse/desktop-home.png) |
-| Products | ![screenshot](documentation/lighthouse/mobile-products.png) | ![screenshot](documentation/lighthouse/desktop-products.png) |
-| Product Details | ![screenshot](documentation/lighthouse/mobile-product-details.png) | ![screenshot](documentation/lighthouse/desktop-product-details.png) |
-| Bag | ![screenshot](documentation/lighthouse/mobile-bag.png) | ![screenshot](documentation/lighthouse/desktop-bag.png) |
-| Checkout | ![screenshot](documentation/lighthouse/mobile-checkout.png) | ![screenshot](documentation/lighthouse/desktop-checkout.png) |
-| Checkout Success | ![screenshot](documentation/lighthouse/mobile-checkout-success.png) | ![screenshot](documentation/lighthouse/desktop-checkout-success.png) |
-| Add Product | ![screenshot](documentation/lighthouse/mobile-add-product.png) | ![screenshot](documentation/lighthouse/desktop-add-product.png) |
-| Edit Product | ![screenshot](documentation/lighthouse/mobile-edit-product.png) | ![screenshot](documentation/lighthouse/desktop-edit-product.png) |
-| Newsletter | ![screenshot](documentation/lighthouse/mobile-newsletter.png) | ![screenshot](documentation/lighthouse/desktop-newsletter.png) |
-| Contact | ![screenshot](documentation/lighthouse/mobile-contact.png) | ![screenshot](documentation/lighthouse/desktop-contact.png) |
-| 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
+| Register | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/register.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/register.png) |
+| Login | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/login.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/login.png) |
+| Profile | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/profile.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/profile.png) |
+| Home/Products | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/home.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/home.png) |
+| Product Details | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/product-details.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/product-details.png) |
+| Trolley | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/trolley.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/trolley.png) |
+| Checkout | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/checkout.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/checkout.png) |
+| Checkout Success | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/checkout-success.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/checkout-success.png) |
+| Add Product | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/add-product.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/add-product.png) |
+| Edit Product | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/edit-product.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/edit-product.png) |
+| 404 | ![screenshot](/readme-documentation/screenshots/lighthouse/mobile/404.png) | ![screenshot](/readme-documentation/screenshots/lighthouse/desktop/404.png) |
 
 ## Defensive Programming
 
@@ -252,7 +243,7 @@ Most of your project's **Features** should already align with the **User Stories
 
 ## Bugs/Issues
 
-* The X button on my toasts doesn't close the toast, despite the data-dismiss being linked to the .toast class in my toasts.
+* The X button on my toasts didn't close the toast, despite the data-dismiss being linked to the .toast class in my toasts.
     * The fix for this was simple, Bootstrap 5 attributes use data-bs and the example project was made before Bootstrap 5 so I just had to update the data-dismiss to data-bs-dismiss.
 
 * I have been unable to get any images to display. I'm not sure if it's because I've done something wrong with the MEDIA_URL in settings.
